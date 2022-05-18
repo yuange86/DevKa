@@ -1,0 +1,7 @@
+[submodule "devka-graphic/3rdparty/imgui"]
+	path = devka-graphic/3rdparty/imgui
+	url = https://github.com/yuange86/imgui
+	branch = docking
+[submodule "devka-graphic/3rdparty/glfw"]
+	path = devka-graphic/3rdparty/glfw
+	url = https://github.com/yuange86/glfw
