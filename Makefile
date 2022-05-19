@@ -26,15 +26,6 @@ else ifeq ($(config),release)
   devka_core_config = release
   devka_editor_config = release
 
-else ifeq ($(config),dist)
-  GLFW_config = dist
-  ImGui_config = dist
-  common_config = dist
-  devka_physics_config = dist
-  devka_graphic_config = dist
-  devka_core_config = dist
-  devka_editor_config = dist
-
 else
   $(error "invalid configuration $(config)")
 endif
@@ -71,7 +62,7 @@ ifneq (,$(devka_physics_config))
 	@${MAKE} --no-print-directory -C devka-physics -f Makefile config=$(devka_physics_config)
 endif
 
-devka-graphic: common devka-physics
+devka-graphic: common GLFW ImGui
 ifneq (,$(devka_graphic_config))
 	@echo "==== Building devka-graphic ($(devka_graphic_config)) ===="
 	@${MAKE} --no-print-directory -C devka-graphic -f Makefile config=$(devka_graphic_config)
@@ -83,7 +74,7 @@ ifneq (,$(devka_core_config))
 	@${MAKE} --no-print-directory -C devka-core -f Makefile config=$(devka_core_config)
 endif
 
-devka-editor: common devka-core
+devka-editor: common GLFW ImGui devka-physics devka-graphic devka-core
 ifneq (,$(devka_editor_config))
 	@echo "==== Building devka-editor ($(devka_editor_config)) ===="
 	@${MAKE} --no-print-directory -C devka-editor -f Makefile config=$(devka_editor_config)
@@ -104,7 +95,6 @@ help:
 	@echo "CONFIGURATIONS:"
 	@echo "  debug"
 	@echo "  release"
-	@echo "  dist"
 	@echo ""
 	@echo "TARGETS:"
 	@echo "   all (default)"

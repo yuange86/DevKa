@@ -9,6 +9,7 @@ project "devka-graphic"
 
     includedirs {
         "src",
+        "%{IncludeDirs.spdlog}",
         "%{IncludeDirs.common}",
         "%{IncludeDirs.GLFW}",
         "%{IncludeDirs.imgui}",
@@ -21,8 +22,8 @@ project "devka-graphic"
 
     links {
         "common",
-        "devka-physics",
-        "devka-graphic",
+        "GLFW",
+        "Imgui",
     }
 
 
@@ -30,12 +31,14 @@ project "devka-graphic"
         systemversion "latest"
         defines{}
 
-    filter "configurations:Debug"
+        filter "configurations:Debug"
         defines "DK_DEBUG"
-        buildoptions { "/MDd" }
+        runtime "Debug"
+        symbols "on"
 
     filter "configurations:Release"
         defines "DK_RELEASE"
-        buildoptions { "/MD" }
+        runtime "Release"
+        optimize "on"
 
 

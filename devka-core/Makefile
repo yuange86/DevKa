@@ -19,12 +19,11 @@ endif
 # #############################################
 
 RESCOMP = windres
-INCLUDES += -Isrc -I../common/src -I../devka-graphic -I../devka-physics
+INCLUDES += -Isrc -I../common/3rdparty/spdlog/include -I../common/src -I../devka-graphic/3rdparty/glfw/include -I../devka-graphic/3rdparty/imgui -I../devka-graphic/src -I../devka-physics/src
 FORCE_INCLUDE +=
 ALL_CPPFLAGS += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
 ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-ALL_LDFLAGS += $(LDFLAGS) -Wl,-rpath,'$$ORIGIN/../devka-physics' -Wl,-rpath,'$$ORIGIN/../devka-graphic' -shared -Wl,-soname=libdevka-core.so -s
-LINKCMD = $(CXX) -o "$@" $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
+LINKCMD = $(AR) -rcs "$@" $(OBJECTS)
 define PREBUILDCMDS
 endef
 define PRELINKCMDS
@@ -34,33 +33,25 @@ endef
 
 ifeq ($(config),debug)
 TARGETDIR = ../bin/Debug-linux/devka-core
-TARGET = $(TARGETDIR)/libdevka-core.so
+TARGET = $(TARGETDIR)/libdevka-core.a
 OBJDIR = ../bin/Debug-linux/.int/devka-core
 DEFINES += -DDK_DEBUG
-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -fPIC /MDd
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -fPIC -std=c++20 /MDd
+ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -g
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -g -std=c++20
 LIBS += ../bin/Debug-linux/common/libcommon.a ../bin/Debug-linux/devka-physics/libdevka-physics.so ../bin/Debug-linux/devka-graphic/libdevka-graphic.so
 LDDEPS += ../bin/Debug-linux/common/libcommon.a ../bin/Debug-linux/devka-physics/libdevka-physics.so ../bin/Debug-linux/devka-graphic/libdevka-graphic.so
+ALL_LDFLAGS += $(LDFLAGS) -Wl,-rpath,'$$ORIGIN/../devka-physics' -Wl,-rpath,'$$ORIGIN/../devka-graphic'
 
 else ifeq ($(config),release)
 TARGETDIR = ../bin/Release-linux/devka-core
-TARGET = $(TARGETDIR)/libdevka-core.so
+TARGET = $(TARGETDIR)/libdevka-core.a
 OBJDIR = ../bin/Release-linux/.int/devka-core
 DEFINES += -DDK_RELEASE
-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -fPIC /MD
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -fPIC -std=c++20 /MD
+ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -O2
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -O2 -std=c++20
 LIBS += ../bin/Release-linux/common/libcommon.a ../bin/Release-linux/devka-physics/libdevka-physics.so ../bin/Release-linux/devka-graphic/libdevka-graphic.so
 LDDEPS += ../bin/Release-linux/common/libcommon.a ../bin/Release-linux/devka-physics/libdevka-physics.so ../bin/Release-linux/devka-graphic/libdevka-graphic.so
-
-else ifeq ($(config),dist)
-TARGETDIR = ../bin/Dist-linux/devka-core
-TARGET = $(TARGETDIR)/libdevka-core.so
-OBJDIR = ../bin/Dist-linux/.int/devka-core
-DEFINES +=
-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -fPIC
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -fPIC -std=c++20
-LIBS += ../bin/Dist-linux/common/libcommon.a ../bin/Dist-linux/devka-physics/libdevka-physics.so ../bin/Dist-linux/devka-graphic/libdevka-graphic.so
-LDDEPS += ../bin/Dist-linux/common/libcommon.a ../bin/Dist-linux/devka-physics/libdevka-physics.so ../bin/Dist-linux/devka-graphic/libdevka-graphic.so
+ALL_LDFLAGS += $(LDFLAGS) -Wl,-rpath,'$$ORIGIN/../devka-physics' -Wl,-rpath,'$$ORIGIN/../devka-graphic' -s
 
 endif
 
@@ -71,11 +62,6 @@ endif
 # File sets
 # #############################################
 
-GENERATED :=
-OBJECTS :=
-
-GENERATED += $(OBJDIR)/core.o
-OBJECTS += $(OBJDIR)/core.o
 
 # Rules
 # #############################################
@@ -83,7 +69,7 @@ OBJECTS += $(OBJDIR)/core.o
 all: $(TARGET)
 	@:
 
-$(TARGET): $(GENERATED) $(OBJECTS) $(LDDEPS) | $(TARGETDIR)
+$(TARGET): $(OBJECTS) $(LDDEPS) | $(TARGETDIR)
 	$(PRELINKCMDS)
 	@echo Linking devka-core
 	$(SILENT) $(LINKCMD)
@@ -138,10 +124,6 @@ endif
 
 # File Rules
 # #############################################
-
-$(OBJDIR)/core.o: src/core.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 
 -include $(OBJECTS:%.o=%.d)
 ifneq (,$(PCH))

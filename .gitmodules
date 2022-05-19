@@ -5,3 +5,6 @@
 [submodule "devka-graphic/3rdparty/glfw"]
 	path = devka-graphic/3rdparty/glfw
 	url = https://github.com/yuange86/glfw
+[submodule "common/3rdparty/spdlog"]
+	path = common/3rdparty/spdlog
+	url = https://github.com/gabime/spdlog

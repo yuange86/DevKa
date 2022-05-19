@@ -9,8 +9,7 @@ project "common"
 
     includedirs {
         "src",
-        "%{IncludeDirs.GLFW}",
-        "%{IncludeDirs.imgui}",
+        "%{IncludeDirs.spdlog}",
     }
 
     files {
@@ -25,10 +24,12 @@ project "common"
 
     filter "configurations:Debug"
         defines "DK_DEBUG"
-        buildoptions { "/MDd" }
+        runtime "Debug"
+        symbols "on"
 
     filter "configurations:Release"
         defines "DK_RELEASE"
-        buildoptions { "/MD" }
+        runtime "Release"
+        optimize "on"
 
 

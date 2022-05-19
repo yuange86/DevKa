@@ -2,7 +2,13 @@ include "premakeIncludeDirs.lua"
 
 workspace "devka"
     filename "DevKa Engine"
-    configurations { "Debug", "Release", "Dist" }
+    
+    configurations { 
+        "Debug", 
+        "Release" 
+    }
+
+    startproject "devka-editor"
 
 
 outputdir = "bin/%{cfg.buildcfg}-%{cfg.system}"

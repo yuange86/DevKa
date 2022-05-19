@@ -19,13 +19,12 @@ endif
 # #############################################
 
 RESCOMP = windres
-INCLUDES += -Isrc -I../devka-graphic/3rdparty/glfw/include -I../devka-graphic/3rdparty/imgui
+INCLUDES += -Isrc -I3rdparty/spdlog/include
 FORCE_INCLUDE +=
 ALL_CPPFLAGS += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
 ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
 LIBS +=
 LDDEPS +=
-ALL_LDFLAGS += $(LDFLAGS) -s
 LINKCMD = $(AR) -rcs "$@" $(OBJECTS)
 define PREBUILDCMDS
 endef
@@ -39,24 +38,18 @@ TARGETDIR = ../bin/Debug-linux/common
 TARGET = $(TARGETDIR)/libcommon.a
 OBJDIR = ../bin/Debug-linux/.int/common
 DEFINES += -DDK_DEBUG
-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) /MDd
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -std=c++20 /MDd
+ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -g
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -g -std=c++20
+ALL_LDFLAGS += $(LDFLAGS)
 
 else ifeq ($(config),release)
 TARGETDIR = ../bin/Release-linux/common
 TARGET = $(TARGETDIR)/libcommon.a
 OBJDIR = ../bin/Release-linux/.int/common
 DEFINES += -DDK_RELEASE
-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) /MD
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -std=c++20 /MD
-
-else ifeq ($(config),dist)
-TARGETDIR = ../bin/Dist-linux/common
-TARGET = $(TARGETDIR)/libcommon.a
-OBJDIR = ../bin/Dist-linux/.int/common
-DEFINES +=
-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS)
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -std=c++20
+ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -O2
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -O2 -std=c++20
+ALL_LDFLAGS += $(LDFLAGS) -s
 
 endif
 
@@ -67,6 +60,11 @@ endif
 # File sets
 # #############################################
 
+GENERATED :=
+OBJECTS :=
+
+GENERATED += $(OBJDIR)/log.o
+OBJECTS += $(OBJDIR)/log.o
 
 # Rules
 # #############################################
@@ -74,7 +72,7 @@ endif
 all: $(TARGET)
 	@:
 
-$(TARGET): $(OBJECTS) $(LDDEPS) | $(TARGETDIR)
+$(TARGET): $(GENERATED) $(OBJECTS) $(LDDEPS) | $(TARGETDIR)
 	$(PRELINKCMDS)
 	@echo Linking common
 	$(SILENT) $(LINKCMD)
@@ -129,6 +127,10 @@ endif
 
 # File Rules
 # #############################################
+
+$(OBJDIR)/log.o: src/common/log/log.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 
 -include $(OBJECTS:%.o=%.d)
 ifneq (,$(PCH))

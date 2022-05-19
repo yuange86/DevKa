@@ -19,11 +19,10 @@ endif
 # #############################################
 
 RESCOMP = windres
-INCLUDES += -Isrc -I../common/src
+INCLUDES += -Isrc -I../common/3rdparty/spdlog/include -I../common/src
 FORCE_INCLUDE +=
 ALL_CPPFLAGS += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
 ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-ALL_LDFLAGS += $(LDFLAGS) -shared -Wl,-soname=libdevka-physics.so -s
 LINKCMD = $(CXX) -o "$@" $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
 define PREBUILDCMDS
 endef
@@ -37,30 +36,22 @@ TARGETDIR = ../bin/Debug-linux/devka-physics
 TARGET = $(TARGETDIR)/libdevka-physics.so
 OBJDIR = ../bin/Debug-linux/.int/devka-physics
 DEFINES += -DDK_DEBUG
-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -fPIC /MDd
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -fPIC -std=c++20 /MDd
+ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -fPIC -g
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -fPIC -g -std=c++20
 LIBS += ../bin/Debug-linux/common/libcommon.a
 LDDEPS += ../bin/Debug-linux/common/libcommon.a
+ALL_LDFLAGS += $(LDFLAGS) -shared -Wl,-soname=libdevka-physics.so
 
 else ifeq ($(config),release)
 TARGETDIR = ../bin/Release-linux/devka-physics
 TARGET = $(TARGETDIR)/libdevka-physics.so
 OBJDIR = ../bin/Release-linux/.int/devka-physics
 DEFINES += -DDK_RELEASE
-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -fPIC /MD
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -fPIC -std=c++20 /MD
+ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -O2 -fPIC
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -O2 -fPIC -std=c++20
 LIBS += ../bin/Release-linux/common/libcommon.a
 LDDEPS += ../bin/Release-linux/common/libcommon.a
-
-else ifeq ($(config),dist)
-TARGETDIR = ../bin/Dist-linux/devka-physics
-TARGET = $(TARGETDIR)/libdevka-physics.so
-OBJDIR = ../bin/Dist-linux/.int/devka-physics
-DEFINES +=
-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -fPIC
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -fPIC -std=c++20
-LIBS += ../bin/Dist-linux/common/libcommon.a
-LDDEPS += ../bin/Dist-linux/common/libcommon.a
+ALL_LDFLAGS += $(LDFLAGS) -shared -Wl,-soname=libdevka-physics.so -s
 
 endif
 

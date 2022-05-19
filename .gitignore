@@ -1,2 +1,6 @@
 .vscode
 bin
+
+GPATH
+GRTAGS
+GTAGS

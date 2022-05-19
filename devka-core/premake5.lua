@@ -1,5 +1,5 @@
 project "devka-core"
-    kind "SharedLib"
+    kind "StaticLib"
     language "c++"
     cppdialect "c++20"
     staticruntime "off"
@@ -9,7 +9,10 @@ project "devka-core"
 
     includedirs {
         "src",
+        "%{IncludeDirs.spdlog}",
         "%{IncludeDirs.common}",
+        "%{IncludeDirs.GLFW}",
+        "%{IncludeDirs.imgui}",
         "%{IncludeDirs.graphic}",
         "%{IncludeDirs.physics}",
     }
@@ -30,12 +33,14 @@ project "devka-core"
         systemversion "latest"
         defines{}
 
-    filter "configurations:Debug"
+        filter "configurations:Debug"
         defines "DK_DEBUG"
-        buildoptions { "/MDd" }
+        runtime "Debug"
+        symbols "on"
 
     filter "configurations:Release"
         defines "DK_RELEASE"
-        buildoptions { "/MD" }
+        runtime "Release"
+        optimize "on"
 
 

@@ -9,6 +9,7 @@ project "devka-physics"
 
     includedirs {
         "src",
+        "%{IncludeDirs.spdlog}",
         "%{IncludeDirs.common}",
     }
 
@@ -26,12 +27,14 @@ project "devka-physics"
         systemversion "latest"
         defines{}
 
-    filter "configurations:Debug"
+        filter "configurations:Debug"
         defines "DK_DEBUG"
-        buildoptions { "/MDd" }
+        runtime "Debug"
+        symbols "on"
 
     filter "configurations:Release"
         defines "DK_RELEASE"
-        buildoptions { "/MD" }
+        runtime "Release"
+        optimize "on"
 
 
