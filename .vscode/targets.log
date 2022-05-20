@@ -1,14 +1,12 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # GNU Make 4.3
- 
 # Built for x86_64-pc-linux-gnu
- 
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri May 20 18:33:41 2022
+# Make data base, printed on Fri May 20 22:41:25 2022
 
 # Variables
 
@@ -21,9 +19,8 @@ ImGui_config = debug
 # makefile (from 'Makefile', line 18)
 devka_editor_config = debug
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-6a4fe23c-fbd5-4005-850d-fcf272ab766a.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-b5a9379d-49f8-4dac-81b9-ce3b1a6e213c.sock
 # environment
- 
 LC_NAME = ko_KR.UTF-8
 # environment
 LC_NUMERIC = ko_KR.UTF-8
@@ -116,7 +113,7 @@ ZSH = /home/io-yologram/.oh-my-zsh
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 19849
+VSCODE_PID = 96115
 # environment
 XDG_SESSION_TYPE = x11
 # makefile (from 'Makefile', line 33)
@@ -210,7 +207,7 @@ MAKE_VERSION := 4.3
 # environment
 LC_MEASUREMENT = ko_KR.UTF-8
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 19849
+GIO_LAUNCHED_DESKTOP_FILE_PID = 96115
 # environment
 PAGER = less
 # environment
@@ -268,9 +265,9 @@ LC_IDENTIFICATION = ko_KR.UTF-8
 
 # Directories
 
-# . (device 2050, inode 10355200): 20 files, no impossibilities.
+# . (device 2050, inode 10617007): 15 files, no impossibilities.
 
-# 20 files, no impossibilities in 1 directories.
+# 15 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -278,9 +275,10 @@ LC_IDENTIFICATION = ko_KR.UTF-8
 
 # Files
 
-devka-editor: devka-core
+devka-editor: common devka-core
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
+ 
 #  File does not exist.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 79):
@@ -290,7 +288,7 @@ devka-editor: devka-core
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-20 18:01:36.805865972
+#  Last modified 2022-05-20 22:41:08.443396901
 #  File has been updated.
 #  Successfully updated.
 
@@ -302,7 +300,6 @@ Makefile:
 
 clean:
 #  Phony target (prerequisite of .PHONY).
- 
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
@@ -442,19 +439,19 @@ common:
 	@${MAKE} --no-print-directory -C common -f Makefile config=$(common_config)
 
 # files hash-table stats:
-# Load=15/1024=1%, Rehash=0, Collisions=0/65=0%
+# Load=15/1024=1%, Rehash=0, Collisions=0/66=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 31 / storage = 276 B / avg = 8 B
-# current buf: size = 8162 B / used = 276 B / count = 31 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 26 / storage = 246 B / avg = 9 B
+# current buf: size = 8162 B / used = 246 B / count = 26 / avg = 9 B
 
-# strcache performance: lookups = 82 / hit rate = 62%
+# strcache performance: lookups = 78 / hit rate = 66%
 # hash-table stats:
-# Load=31/8192=0%, Rehash=0, Collisions=0/82=0%
-# Finished Make data base on Fri May 20 18:33:41 2022
+# Load=26/8192=0%, Rehash=0, Collisions=0/78=0%
+# Finished Make data base on Fri May 20 22:41:25 2022
 
  

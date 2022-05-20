@@ -68,7 +68,7 @@ ifneq (,$(devka_graphic_config))
 	@${MAKE} --no-print-directory -C devka-graphic -f Makefile config=$(devka_graphic_config)
 endif
 
-devka-core: common devka-physics devka-graphic
+devka-core: devka-physics devka-graphic
 ifneq (,$(devka_core_config))
 	@echo "==== Building devka-core ($(devka_core_config)) ===="
 	@${MAKE} --no-print-directory -C devka-core -f Makefile config=$(devka_core_config)

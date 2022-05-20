@@ -37,7 +37,9 @@ namespace dvk
 
 #define DK_LOG_INIT()                       ::dvk::SpdLog::init()
 
-#define DK_LOGGGER(code)                ::dvk::SpdLog::get_logger(code)
+#define DK_LOGGGER(code)                    ::dvk::SpdLog::get_logger(code)
+
+#define DK_CREATE_LOGGER(...)               ::dvk::SpdLog::create_logger(__VA_ARGS__)
 
 
 #define DK_TRACE(code, ...)        ::dvk::SpdLog::get_logger(code)->trace(__VA_ARGS__)
@@ -67,6 +69,8 @@ namespace dvk
 #define DK_LOG_INIT()   
 
 #define DK_LOGGGER(code)
+
+#define DK_CREATE_LOGGER(...)  
 
 
 #define DK_TRACE(code, ...) 

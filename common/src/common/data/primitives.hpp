@@ -16,3 +16,10 @@
 
 #define f32         float
 #define f64         double
+
+
+#define Raw(__Type)             __Type*
+#define DerefRaw(pointer)       *pointer
+
+
+#include "common/base/macro.hpp"

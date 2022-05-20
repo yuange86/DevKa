@@ -1,35 +1,45 @@
-make all --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/io-yologram/solutions/Engine/devka'
 echo "==== Building GLFW (debug) ===="
 make --no-print-directory -C devka-graphic/3rdparty/glfw -f Makefile config=debug
-:
 echo "==== Building ImGui (debug) ===="
 make --no-print-directory -C devka-graphic/3rdparty/imgui -f Makefile config=debug
- 
-:
 echo "==== Building common (debug) ===="
 make --no-print-directory -C common -f Makefile config=debug
- 
+echo Creating ../bin/Debug-linux/.int/common
+mkdir -p ../bin/Debug-linux/.int/common
+echo commonpch.hpp
+g++ -x c++-header   -MMD -MP -DDK_PLATFORM_LINUX -DDK_DEBUG -Isrc -I3rdparty/spdlog/include -m64 -g -std=c++20 -o "../bin/Debug-linux/.int/common/commonpch.hpp.gch" -MF "../bin/Debug-linux/.int/common/commonpch.hpp.d" -c "src/common/pch/commonpch.hpp"
+touch "../bin/Debug-linux/.int/common/commonpch.hpp"
+echo commonpch.cpp
+g++ -include ../bin/Debug-linux/.int/common/commonpch.hpp   -MMD -MP -DDK_PLATFORM_LINUX -DDK_DEBUG -Isrc -I3rdparty/spdlog/include -m64 -g -std=c++20  -o "../bin/Debug-linux/.int/common/commonpch.o" -MF "../bin/Debug-linux/.int/common/commonpch.d" -c "src/common/pch/commonpch.cpp"
+echo log.cpp
+g++ -include ../bin/Debug-linux/.int/common/commonpch.hpp   -MMD -MP -DDK_PLATFORM_LINUX -DDK_DEBUG -Isrc -I3rdparty/spdlog/include -m64 -g -std=c++20  -o "../bin/Debug-linux/.int/common/log.o" -MF "../bin/Debug-linux/.int/common/log.d" -c "src/common/log/log.cpp"
+echo memory.cpp
+g++ -include ../bin/Debug-linux/.int/common/commonpch.hpp   -MMD -MP -DDK_PLATFORM_LINUX -DDK_DEBUG -Isrc -I3rdparty/spdlog/include -m64 -g -std=c++20  -o "../bin/Debug-linux/.int/common/memory.o" -MF "../bin/Debug-linux/.int/common/memory.d" -c "src/common/memory/memory.cpp"
+echo platform_linux.cpp
+g++ -include ../bin/Debug-linux/.int/common/commonpch.hpp   -MMD -MP -DDK_PLATFORM_LINUX -DDK_DEBUG -Isrc -I3rdparty/spdlog/include -m64 -g -std=c++20  -o "../bin/Debug-linux/.int/common/platform_linux.o" -MF "../bin/Debug-linux/.int/common/platform_linux.d" -c "src/common/platform/platform_linux.cpp"
+echo Creating ../bin/Debug-linux/common
+mkdir -p ../bin/Debug-linux/common
+echo Linking common
+ar -rcs "../bin/Debug-linux/common/libcommon.a" ../bin/Debug-linux/.int/common/commonpch.o ../bin/Debug-linux/.int/common/log.o ../bin/Debug-linux/.int/common/memory.o ../bin/Debug-linux/.int/common/platform_linux.o
 :
- 
 echo "==== Building devka-physics (debug) ===="
 make --no-print-directory -C devka-physics -f Makefile config=debug
- 
-:
-echo "==== Building devka-graphic (debug) ===="
-make --no-print-directory -C devka-graphic -f Makefile config=debug
- 
-:
-echo "==== Building devka-core (debug) ===="
-make --no-print-directory -C devka-core -f Makefile config=debug
- 
-:
-echo "==== Building devka-editor (debug) ===="
-make --no-print-directory -C devka-editor -f Makefile config=debug
- 
-echo Linking devka-editor
-g++ -o "../bin/Debug-linux/devka-editor/devka-editor" ../bin/Debug-linux/.int/devka-editor/editor.o   -L/usr/lib64 -Wl,-rpath,'$ORIGIN/../devka-core' -m64 ../bin/Debug-linux/devka-core/libdevka-core.so
-:
- 
+echo Creating ../bin/Debug-linux/devka-physics
+mkdir -p ../bin/Debug-linux/devka-physics
 make: Leaving directory '/home/io-yologram/solutions/Engine/devka'
  
+make[1]: Makefile: No such file or directory
+make[1]: *** No rule to make target 'Makefile'.
+make[1]: Failed to remake makefile 'Makefile'.
+make[1]: *** No targets specified and no makefile found.  Stop.
+make: *** [Makefile:44: GLFW] Error 2
+make[1]: Makefile: No such file or directory
+make[1]: *** No rule to make target 'Makefile'.
+make[1]: Failed to remake makefile 'Makefile'.
+make[1]: *** No targets specified and no makefile found.  Stop.
+make: *** [Makefile:50: ImGui] Error 2
+make[1]: *** No rule to make target '../bin/Debug-linux/common/libcommon.a', needed by '../bin/Debug-linux/devka-physics/libdevka-physics.a'.
+make: *** [Makefile:62: devka-physics] Error 2
+

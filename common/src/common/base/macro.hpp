@@ -21,3 +21,7 @@
 #   define      DK_API
 #   define      DK_EXT
 #endif
+
+
+#define ASSIGN_DEBUG_ONLY(variable, value)      variable = value
+

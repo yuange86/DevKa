@@ -7,6 +7,9 @@ project "devka-core"
     targetdir("%{wks.location}/" .. outputdir .. "/%{prj.name}")
     objdir("%{wks.location}/" .. outputdir .. "/.int/%{prj.name}")
 
+    pchheader "%{IncludeDirs.common}/common/pch/commonpch.hpp"
+    pchsource "%{IncludeDirs.common}/common/pch/commonpch.cpp"
+
     includedirs {
         "src",
         "%{IncludeDirs.spdlog}",
@@ -23,7 +26,6 @@ project "devka-core"
     }
 
     links {
-        "common",
         "devka-physics",
         "devka-graphic",
     }

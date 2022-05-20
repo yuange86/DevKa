@@ -19,6 +19,9 @@ endif
 # #############################################
 
 RESCOMP = windres
+PCH = ../common/src/common/pch/commonpch.hpp
+PCH_PLACEHOLDER = $(OBJDIR)/$(notdir $(PCH))
+GCH = $(PCH_PLACEHOLDER).gch
 INCLUDES += -Isrc -I../common/3rdparty/spdlog/include -I../common/src -I../devka-graphic/3rdparty/glfw/include -I../devka-graphic/3rdparty/imgui -I../devka-graphic/src -I../devka-physics/src
 FORCE_INCLUDE +=
 ALL_CPPFLAGS += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
@@ -38,8 +41,8 @@ OBJDIR = ../bin/Debug-linux/.int/devka-core
 DEFINES += -DDK_DLL -DDK_PLATFORM_LINUX -DDK_DEBUG
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -fPIC -g
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -fPIC -g -std=c++20
-LIBS += ../bin/Debug-linux/common/libcommon.a ../bin/Debug-linux/devka-physics/libdevka-physics.a ../bin/Debug-linux/devka-graphic/libdevka-graphic.a
-LDDEPS += ../bin/Debug-linux/common/libcommon.a ../bin/Debug-linux/devka-physics/libdevka-physics.a ../bin/Debug-linux/devka-graphic/libdevka-graphic.a
+LIBS += ../bin/Debug-linux/devka-physics/libdevka-physics.a ../bin/Debug-linux/devka-graphic/libdevka-graphic.a
+LDDEPS += ../bin/Debug-linux/devka-physics/libdevka-physics.a ../bin/Debug-linux/devka-graphic/libdevka-graphic.a
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64 -shared -Wl,-soname=libdevka-core.so
 
 else ifeq ($(config),release)
@@ -49,8 +52,8 @@ OBJDIR = ../bin/Release-linux/.int/devka-core
 DEFINES += -DDK_DLL -DDK_PLATFORM_LINUX -DDK_RELEASE
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -fPIC
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -fPIC -std=c++20
-LIBS += ../bin/Release-linux/common/libcommon.a ../bin/Release-linux/devka-physics/libdevka-physics.a ../bin/Release-linux/devka-graphic/libdevka-graphic.a
-LDDEPS += ../bin/Release-linux/common/libcommon.a ../bin/Release-linux/devka-physics/libdevka-physics.a ../bin/Release-linux/devka-graphic/libdevka-graphic.a
+LIBS += ../bin/Release-linux/devka-physics/libdevka-physics.a ../bin/Release-linux/devka-graphic/libdevka-graphic.a
+LDDEPS += ../bin/Release-linux/devka-physics/libdevka-physics.a ../bin/Release-linux/devka-graphic/libdevka-graphic.a
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64 -shared -Wl,-soname=libdevka-core.so -s
 
 endif
@@ -62,6 +65,13 @@ endif
 # File sets
 # #############################################
 
+GENERATED :=
+OBJECTS :=
+
+GENERATED += $(OBJDIR)/engine.o
+GENERATED += $(OBJDIR)/window.o
+OBJECTS += $(OBJDIR)/engine.o
+OBJECTS += $(OBJDIR)/window.o
 
 # Rules
 # #############################################
@@ -69,7 +79,7 @@ endif
 all: $(TARGET)
 	@:
 
-$(TARGET): $(OBJECTS) $(LDDEPS) | $(TARGETDIR)
+$(TARGET): $(GENERATED) $(OBJECTS) $(LDDEPS) | $(TARGETDIR)
 	$(PRELINKCMDS)
 	@echo Linking devka-core
 	$(SILENT) $(LINKCMD)
@@ -124,6 +134,13 @@ endif
 
 # File Rules
 # #############################################
+
+$(OBJDIR)/engine.o: src/devka-core/core/engine.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) -include $(PCH_PLACEHOLDER) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/window.o: src/devka-core/core/window.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) -include $(PCH_PLACEHOLDER) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 
 -include $(OBJECTS:%.o=%.d)
 ifneq (,$(PCH))
