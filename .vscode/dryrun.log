@@ -1,0 +1,35 @@
+make all --dry-run --keep-going --print-directory
+make: Entering directory '/home/io-yologram/solutions/Engine/devka'
+echo "==== Building GLFW (debug) ===="
+make --no-print-directory -C devka-graphic/3rdparty/glfw -f Makefile config=debug
+:
+echo "==== Building ImGui (debug) ===="
+make --no-print-directory -C devka-graphic/3rdparty/imgui -f Makefile config=debug
+ 
+:
+echo "==== Building common (debug) ===="
+make --no-print-directory -C common -f Makefile config=debug
+ 
+:
+ 
+echo "==== Building devka-physics (debug) ===="
+make --no-print-directory -C devka-physics -f Makefile config=debug
+ 
+:
+echo "==== Building devka-graphic (debug) ===="
+make --no-print-directory -C devka-graphic -f Makefile config=debug
+ 
+:
+echo "==== Building devka-core (debug) ===="
+make --no-print-directory -C devka-core -f Makefile config=debug
+ 
+:
+echo "==== Building devka-editor (debug) ===="
+make --no-print-directory -C devka-editor -f Makefile config=debug
+ 
+echo Linking devka-editor
+g++ -o "../bin/Debug-linux/devka-editor/devka-editor" ../bin/Debug-linux/.int/devka-editor/editor.o   -L/usr/lib64 -Wl,-rpath,'$ORIGIN/../devka-core' -m64 ../bin/Debug-linux/devka-core/libdevka-core.so
+:
+ 
+make: Leaving directory '/home/io-yologram/solutions/Engine/devka'
+ 

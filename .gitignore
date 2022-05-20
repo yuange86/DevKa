@@ -1,6 +1,8 @@
-.vscode
 bin
 
 GPATH
 GRTAGS
 GTAGS
+
+# c_cpp_properties.json side effect ?
+null.d

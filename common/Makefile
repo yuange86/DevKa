@@ -19,6 +19,9 @@ endif
 # #############################################
 
 RESCOMP = windres
+PCH = src/common/pch/commonpch.hpp
+PCH_PLACEHOLDER = $(OBJDIR)/$(notdir $(PCH))
+GCH = $(PCH_PLACEHOLDER).gch
 INCLUDES += -Isrc -I3rdparty/spdlog/include
 FORCE_INCLUDE +=
 ALL_CPPFLAGS += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
@@ -37,19 +40,19 @@ ifeq ($(config),debug)
 TARGETDIR = ../bin/Debug-linux/common
 TARGET = $(TARGETDIR)/libcommon.a
 OBJDIR = ../bin/Debug-linux/.int/common
-DEFINES += -DDK_DEBUG
-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -g
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -g -std=c++20
-ALL_LDFLAGS += $(LDFLAGS)
+DEFINES += -DDK_PLATFORM_LINUX -DDK_DEBUG
+ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -g
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -g -std=c++20
+ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64
 
 else ifeq ($(config),release)
 TARGETDIR = ../bin/Release-linux/common
 TARGET = $(TARGETDIR)/libcommon.a
 OBJDIR = ../bin/Release-linux/.int/common
-DEFINES += -DDK_RELEASE
-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -O2
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -O2 -std=c++20
-ALL_LDFLAGS += $(LDFLAGS) -s
+DEFINES += -DDK_PLATFORM_LINUX -DDK_RELEASE
+ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O2
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -std=c++20
+ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64 -s
 
 endif
 
@@ -63,8 +66,14 @@ endif
 GENERATED :=
 OBJECTS :=
 
+GENERATED += $(OBJDIR)/commonpch.o
 GENERATED += $(OBJDIR)/log.o
+GENERATED += $(OBJDIR)/memory.o
+GENERATED += $(OBJDIR)/platform_linux.o
+OBJECTS += $(OBJDIR)/commonpch.o
 OBJECTS += $(OBJDIR)/log.o
+OBJECTS += $(OBJDIR)/memory.o
+OBJECTS += $(OBJDIR)/platform_linux.o
 
 # Rules
 # #############################################
@@ -130,7 +139,16 @@ endif
 
 $(OBJDIR)/log.o: src/common/log/log.cpp
 	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+	$(SILENT) $(CXX) -include $(PCH_PLACEHOLDER) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/memory.o: src/common/memory/memory.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) -include $(PCH_PLACEHOLDER) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/commonpch.o: src/common/pch/commonpch.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) -include $(PCH_PLACEHOLDER) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/platform_linux.o: src/common/platform/platform_linux.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) -include $(PCH_PLACEHOLDER) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 
 -include $(OBJECTS:%.o=%.d)
 ifneq (,$(PCH))

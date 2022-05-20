@@ -25,17 +25,19 @@ project "devka-editor"
 
     links {
         "common",
-        "GLFW",
-        "imgui",
-        "devka-physics",
-        "devka-graphic",
         "devka-core",
+    }
+
+    defines {
+        "DK_DLL_IMPORT",
     }
 
 
     filter "system:linux"
         systemversion "latest"
-        defines{}
+        defines {
+            "DK_PLATFORM_LINUX",
+        }
 
         filter "configurations:Debug"
         defines "DK_DEBUG"

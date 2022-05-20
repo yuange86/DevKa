@@ -1,0 +1,31 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "defines": [
+                "${default}",
+                "DK_DEBUG",
+                "DK_PLATFORM_LINUX"
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++20",
+            "intelliSenseMode": "linux-gcc-x64",
+            "configurationProvider": "ms-vscode.makefile-tools",
+            "includePath": [
+                "${workspaceFolder}/common/3rdparty/spdlog/include",
+                "${workspaceFolder}/common/src",
+                "${workspaceFolder}/devka-graphic/3rdparty/glfw/include",
+                "${workspaceFolder}/devka-graphic/3rdparty/imgui",
+                "${workspaceFolder}/devka-graphic/src",
+                "${workspaceFolder}/devka-physics/src",
+                "${workspaceFolder}/devka-core/src"
+            ]
+        }
+    ],
+    "version": 4
+}

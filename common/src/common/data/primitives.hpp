@@ -7,6 +7,8 @@
 #define u32         unsigned int
 #define u64         unsigned long long
 
+#define usize       long unsigned int
+
 #define i8          char
 #define i16         short
 #define i32         int

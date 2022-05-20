@@ -2,10 +2,13 @@ include "premakeIncludeDirs.lua"
 
 workspace "devka"
     filename "DevKa Engine"
+
+    architecture "x86_64"
+    system "linux"
     
     configurations { 
         "Debug", 
-        "Release" 
+        "Release",
     }
 
     startproject "devka-editor"

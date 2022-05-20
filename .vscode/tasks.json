@@ -1,0 +1,26 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "GMake Build Debug",
+            "type": "shell",
+            "command": "make config=debug",
+            "dependsOn": [
+                "Premake configuration"
+            ]
+        },
+        {
+            "label": "GMake Build Release",
+            "type": "shell",
+            "command": "make config=release",
+            "dependsOn": [
+                "Premake configuration"
+            ]
+        },
+        {
+            "label": "Premake configuration",
+            "type": "shell",
+            "command": "premake/premake5 gmake2",
+        }
+    ]
+}

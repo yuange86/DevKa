@@ -23,7 +23,7 @@ INCLUDES += -Isrc -I../common/3rdparty/spdlog/include -I../common/src -I3rdparty
 FORCE_INCLUDE +=
 ALL_CPPFLAGS += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
 ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-LINKCMD = $(CXX) -o "$@" $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
+LINKCMD = $(AR) -rcs "$@" $(OBJECTS)
 define PREBUILDCMDS
 endef
 define PRELINKCMDS
@@ -33,25 +33,25 @@ endef
 
 ifeq ($(config),debug)
 TARGETDIR = ../bin/Debug-linux/devka-graphic
-TARGET = $(TARGETDIR)/libdevka-graphic.so
+TARGET = $(TARGETDIR)/libdevka-graphic.a
 OBJDIR = ../bin/Debug-linux/.int/devka-graphic
-DEFINES += -DDK_DEBUG
-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -fPIC -g
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -fPIC -g -std=c++20
+DEFINES += -DDK_PLATFORM_LINUX -DDK_DEBUG
+ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -g
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -g -std=c++20
 LIBS += ../bin/Debug-linux/common/libcommon.a ../bin/Debug-linux/GLFW/libGLFW.a ../bin/Debug-linux/ImGui/libImGui.a
 LDDEPS += ../bin/Debug-linux/common/libcommon.a ../bin/Debug-linux/GLFW/libGLFW.a ../bin/Debug-linux/ImGui/libImGui.a
-ALL_LDFLAGS += $(LDFLAGS) -shared -Wl,-soname=libdevka-graphic.so
+ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64
 
 else ifeq ($(config),release)
 TARGETDIR = ../bin/Release-linux/devka-graphic
-TARGET = $(TARGETDIR)/libdevka-graphic.so
+TARGET = $(TARGETDIR)/libdevka-graphic.a
 OBJDIR = ../bin/Release-linux/.int/devka-graphic
-DEFINES += -DDK_RELEASE
-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -O2 -fPIC
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -O2 -fPIC -std=c++20
+DEFINES += -DDK_PLATFORM_LINUX -DDK_RELEASE
+ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O2
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -std=c++20
 LIBS += ../bin/Release-linux/common/libcommon.a ../bin/Release-linux/GLFW/libGLFW.a ../bin/Release-linux/ImGui/libImGui.a
 LDDEPS += ../bin/Release-linux/common/libcommon.a ../bin/Release-linux/GLFW/libGLFW.a ../bin/Release-linux/ImGui/libImGui.a
-ALL_LDFLAGS += $(LDFLAGS) -shared -Wl,-soname=libdevka-graphic.so -s
+ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64 -s
 
 endif
 

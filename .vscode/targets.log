@@ -1,0 +1,460 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 4.3
+ 
+# Built for x86_64-pc-linux-gnu
+ 
+# Copyright (C) 1988-2020 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Fri May 20 18:33:41 2022
+
+# Variables
+
+# environment
+GDK_BACKEND = x11
+# environment
+LC_ALL = C
+# makefile (from 'Makefile', line 13)
+ImGui_config = debug
+# makefile (from 'Makefile', line 18)
+devka_editor_config = debug
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-6a4fe23c-fbd5-4005-850d-fcf272ab766a.sock
+# environment
+ 
+LC_NAME = ko_KR.UTF-8
+# environment
+LC_NUMERIC = ko_KR.UTF-8
+# environment
+VSCODE_CWD = /home/io-yologram
+# environment
+UBUNTU_MENUPROXY = 1
+# environment
+NVM_DIR = /home/io-yologram/.nvm
+# environment
+LC_ADDRESS = ko_KR.UTF-8
+# environment
+GDM_LANG = ko
+# default
+MAKE_COMMAND := make
+# environment
+GTK3_MODULES = xapp-gtk3-module
+# environment
+QT_ACCESSIBILITY = 1
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# default
+.VARIABLES := 
+# environment
+PWD = /home/io-yologram/solutions/Engine/devka
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+LSCOLORS = Gxfxcxdxbxegedabagacad
+# environment
+XDG_DATA_DIRS = /usr/share/budgie-desktop:/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+# environment
+OLDPWD = /home/io-yologram
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+VSCODE_LOG_STACK = false
+# automatic
+%F = $(notdir $%)
+# environment
+NVM_INC = /home/io-yologram/.nvm/versions/node/v18.1.0/include/node
+# environment
+VSCODE_CODE_CACHE_PATH = /home/io-yologram/.config/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
+# environment
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
+# environment
+LANG = C
+# environment
+XAUTHORITY = /home/io-yologram/.Xauthority
+# default
+.LOADED := 
+# default
+.INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
+# makefile
+MAKEFLAGS = pqrR
+# makefile (from 'Makefile', line 12)
+GLFW_config = debug
+# makefile
+CURDIR := /home/io-yologram/solutions/Engine/devka
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+MFLAGS = -pqrR
+# environment
+SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
+# default
+.SHELLFLAGS := -c
+# environment
+NVM_BIN = /home/io-yologram/.nvm/versions/node/v18.1.0/bin
+# environment
+XDG_CONFIG_DIRS = /etc/xdg/xdg-budgie-desktop:/etc/xdg
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+P9K_SSH = 0
+# environment
+XDG_SESSION_DESKTOP = budgie-desktop
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST := Makefile
+# automatic
+@F = $(notdir $@)
+# environment
+ZSH = /home/io-yologram/.oh-my-zsh
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+VSCODE_PID = 19849
+# environment
+XDG_SESSION_TYPE = x11
+# makefile (from 'Makefile', line 33)
+PROJECTS := GLFW ImGui common devka-physics devka-graphic devka-core devka-editor
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# makefile (from 'Makefile', line 16)
+devka_graphic_config = debug
+# environment
+SESSION_MANAGER = local/sonyMac-DevKa:@/tmp/.ICE-unix/1199,unix/sonyMac-DevKa:/tmp/.ICE-unix/1199
+# automatic
+*F = $(notdir $*)
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# environment
+VSCODE_NLS_CONFIG = {"locale":"ko","availableLanguages":{"*":"ko"},"_languagePackId":"738ac08552cca045871a73764b8c446f.ko","_translationsConfigFile":"/home/io-yologram/.config/Code/clp/738ac08552cca045871a73764b8c446f.ko/tcf.json","_cacheRoot":"/home/io-yologram/.config/Code/clp/738ac08552cca045871a73764b8c446f.ko","_resolvedLanguagePackCoreLocation":"/home/io-yologram/.config/Code/clp/738ac08552cca045871a73764b8c446f.ko/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5","_corruptedFile":"/home/io-yologram/.config/Code/clp/738ac08552cca045871a73764b8c446f.ko/corrupted.info","_languagePackSupport":true}
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+GNOME_DESKTOP_SESSION_ID = this-is-deprecated
+# makefile
+SHELL = /bin/sh
+# default
+MAKECMDGOALS := all
+# environment
+XMODIFIERS = @im=ibus
+# environment
+SHLVL = 0
+# makefile (from 'Makefile', line 17)
+devka_core_config = debug
+# environment
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# environment
+PATH = /home/io-yologram/.nvm/versions/node/v18.1.0/bin:/home/io-yologram/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+# default
+MAKEFILES := 
+# environment
+LANGUAGE = ko:en_GB:en
+# environment
+LC_MONETARY = ko_KR.UTF-8
+# automatic
+^F = $(notdir $^)
+# environment
+LC_TIME = ko_KR.UTF-8
+# environment
+VSCODE_LOG_NATIVE = false
+# environment
+LC_TELEPHONE = ko_KR.UTF-8
+# automatic
+?F = $(notdir $?)
+# environment
+XDG_CURRENT_DESKTOP = Budgie:GNOME
+# makefile (from 'Makefile', line 14)
+common_config = debug
+# environment
+LS_COLORS = 
+# automatic
++F = $(notdir $+)
+# environment
+XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
+# environment
+LESS = -R
+# environment
+DESKTOP_SESSION = budgie-desktop
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = Budgie:GNOME
+# makefile (from 'Makefile', line 15)
+devka_physics_config = debug
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+LOGNAME = io-yologram
+# environment
+GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
+# makefile
+.DEFAULT_GOAL := all
+# environment
+DISPLAY = :0
+# environment
+USER = io-yologram
+# environment
+GTK_MODULES = appmenu-gtk-module
+# default
+MAKE_VERSION := 4.3
+# environment
+LC_MEASUREMENT = ko_KR.UTF-8
+# environment
+GIO_LAUNCHED_DESKTOP_FILE_PID = 19849
+# environment
+PAGER = less
+# environment
+_ = /usr/share/code/code
+# environment
+LC_PAPER = ko_KR.UTF-8
+# environment
+XDG_RUNTIME_DIR = /run/user/1000
+# environment
+GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
+# environment
+NVM_CD_FLAGS = -q
+# environment
+XDG_SESSION_CLASS = user
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /home/io-yologram
+# environment
+QT_IM_MODULE = ibus
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+VSCODE_IPC_HOOK = /run/user/1000/vscode-bc699d82-1.67.2-main.sock
+# environment
+GSETTINGS_SCHEMA_DIR = /home/io-yologram/data
+# environment
+PAPERSIZE = a4
+# default
+.RECIPEPREFIX := 
+# automatic
+<F = $(notdir $<)
+# makefile (from 'Makefile', line 4)
+config = debug
+# default
+SUFFIXES := 
+# makefile (from 'Makefile', line 8)
+SILENT = @
+# environment
+XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/io-yologram
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
+# environment
+XDG_MENU_PREFIX = gnome-
+# environment
+GDMSESSION = budgie-desktop
+# environment
+LC_IDENTIFICATION = ko_KR.UTF-8
+# variable set hash-table stats:
+# Load=123/1024=12%, Rehash=0, Collisions=9/172=5%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 2050, inode 10355200): 20 files, no impossibilities.
+
+# 20 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+devka-editor: devka-core
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 79):
+	@echo "==== Building devka-editor ($(devka_editor_config)) ===="
+	@${MAKE} --no-print-directory -C devka-editor -f Makefile config=$(devka_editor_config)
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-20 18:01:36.805865972
+#  File has been updated.
+#  Successfully updated.
+
+3rdparty: GLFW ImGui
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+ 
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 84):
+	@${MAKE} --no-print-directory -C devka-graphic/3rdparty/glfw -f Makefile clean
+	@${MAKE} --no-print-directory -C devka-graphic/3rdparty/imgui -f Makefile clean
+	@${MAKE} --no-print-directory -C common -f Makefile clean
+	@${MAKE} --no-print-directory -C devka-physics -f Makefile clean
+	@${MAKE} --no-print-directory -C devka-graphic -f Makefile clean
+	@${MAKE} --no-print-directory -C devka-core -f Makefile clean
+	@${MAKE} --no-print-directory -C devka-editor -f Makefile clean
+
+devka-physics: common
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 61):
+	@echo "==== Building devka-physics ($(devka_physics_config)) ===="
+	@${MAKE} --no-print-directory -C devka-physics -f Makefile config=$(devka_physics_config)
+
+GLFW:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := GLFW
+# automatic
+# * := 
+# automatic
+# < := 
+# automatic
+# + := 
+# automatic
+# % := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# automatic
+# | := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=2/15=13%
+#  recipe to execute (from 'Makefile', line 43):
+	@echo "==== Building GLFW ($(GLFW_config)) ===="
+	@${MAKE} --no-print-directory -C devka-graphic/3rdparty/glfw -f Makefile config=$(GLFW_config)
+
+ImGui:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 49):
+	@echo "==== Building ImGui ($(ImGui_config)) ===="
+	@${MAKE} --no-print-directory -C devka-graphic/3rdparty/imgui -f Makefile config=$(ImGui_config)
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+devka-core: common devka-physics devka-graphic
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 73):
+	@echo "==== Building devka-core ($(devka_core_config)) ===="
+	@${MAKE} --no-print-directory -C devka-core -f Makefile config=$(devka_core_config)
+
+all: GLFW ImGui common devka-physics devka-graphic devka-core devka-editor
+#  Phony target (prerequisite of .PHONY).
+#  Command line target.
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
+
+help:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 93):
+	@echo "Usage: make [config=name] [target]"
+	@echo ""
+	@echo "CONFIGURATIONS:"
+	@echo "  debug"
+	@echo "  release"
+	@echo ""
+	@echo "TARGETS:"
+	@echo "   all (default)"
+	@echo "   clean"
+	@echo "   GLFW"
+	@echo "   ImGui"
+	@echo "   common"
+	@echo "   devka-physics"
+	@echo "   devka-graphic"
+	@echo "   devka-core"
+	@echo "   devka-editor"
+	@echo ""
+	@echo "For more information, see https://github.com/premake/premake-core/wiki"
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+.PHONY: all clean help GLFW ImGui common devka-physics devka-graphic devka-core devka-editor 3rdparty
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+devka-graphic: common GLFW ImGui
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 67):
+	@echo "==== Building devka-graphic ($(devka_graphic_config)) ===="
+	@${MAKE} --no-print-directory -C devka-graphic -f Makefile config=$(devka_graphic_config)
+
+common:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 55):
+	@echo "==== Building common ($(common_config)) ===="
+	@${MAKE} --no-print-directory -C common -f Makefile config=$(common_config)
+
+# files hash-table stats:
+# Load=15/1024=1%, Rehash=0, Collisions=0/65=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 31 / storage = 276 B / avg = 8 B
+# current buf: size = 8162 B / used = 276 B / count = 31 / avg = 8 B
+
+# strcache performance: lookups = 82 / hit rate = 62%
+# hash-table stats:
+# Load=31/8192=0%, Rehash=0, Collisions=0/82=0%
+# Finished Make data base on Fri May 20 18:33:41 2022
+
+ 

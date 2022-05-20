@@ -1,5 +1,5 @@
 project "devka-core"
-    kind "StaticLib"
+    kind "SharedLib"
     language "c++"
     cppdialect "c++20"
     staticruntime "off"
@@ -28,10 +28,20 @@ project "devka-core"
         "devka-graphic",
     }
 
+    defines {
+        "DK_DLL",
+    }
+
+    -- postbuildcommands {
+    --     ("%{COPY} %{cfg.buildtarget.relpath} %{wks.location}/lib/" .. outputdir .. "/%{prj.name}"),
+    -- }
+
 
     filter "system:linux"
         systemversion "latest"
-        defines{}
+        defines {
+            "DK_PLATFORM_LINUX",
+        }
 
         filter "configurations:Debug"
         defines "DK_DEBUG"

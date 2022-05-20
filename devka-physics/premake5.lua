@@ -1,5 +1,5 @@
 project "devka-physics"
-    kind "SharedLib"
+    kind "StaticLib"
     language "c++"
     cppdialect "c++20"
     staticruntime "off"
@@ -25,7 +25,9 @@ project "devka-physics"
 
     filter "system:linux"
         systemversion "latest"
-        defines{}
+        defines {
+            "DK_PLATFORM_LINUX",
+        }
 
         filter "configurations:Debug"
         defines "DK_DEBUG"

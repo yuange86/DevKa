@@ -1,5 +1,5 @@
 project "devka-graphic"
-    kind "SharedLib"
+    kind "StaticLib"
     language "c++"
     cppdialect "c++20"
     staticruntime "off"
@@ -29,7 +29,9 @@ project "devka-graphic"
 
     filter "system:linux"
         systemversion "latest"
-        defines{}
+        defines {
+            "DK_PLATFORM_LINUX",
+        }
 
         filter "configurations:Debug"
         defines "DK_DEBUG"

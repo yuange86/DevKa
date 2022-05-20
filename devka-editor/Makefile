@@ -35,23 +35,23 @@ ifeq ($(config),debug)
 TARGETDIR = ../bin/Debug-linux/devka-editor
 TARGET = $(TARGETDIR)/devka-editor
 OBJDIR = ../bin/Debug-linux/.int/devka-editor
-DEFINES += -DDK_DEBUG
-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -g
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -g -std=c++20
-LIBS += ../bin/Debug-linux/common/libcommon.a ../bin/Debug-linux/GLFW/libGLFW.a ../bin/Debug-linux/ImGui/libImGui.a ../bin/Debug-linux/devka-physics/libdevka-physics.so ../bin/Debug-linux/devka-graphic/libdevka-graphic.so ../bin/Debug-linux/devka-core/libdevka-core.a
-LDDEPS += ../bin/Debug-linux/common/libcommon.a ../bin/Debug-linux/GLFW/libGLFW.a ../bin/Debug-linux/ImGui/libImGui.a ../bin/Debug-linux/devka-physics/libdevka-physics.so ../bin/Debug-linux/devka-graphic/libdevka-graphic.so ../bin/Debug-linux/devka-core/libdevka-core.a
-ALL_LDFLAGS += $(LDFLAGS) -Wl,-rpath,'$$ORIGIN/../devka-physics' -Wl,-rpath,'$$ORIGIN/../devka-graphic'
+DEFINES += -DDK_DLL_IMPORT -DDK_PLATFORM_LINUX -DDK_DEBUG
+ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -g
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -g -std=c++20
+LIBS += ../bin/Debug-linux/common/libcommon.a ../bin/Debug-linux/devka-core/libdevka-core.so
+LDDEPS += ../bin/Debug-linux/common/libcommon.a ../bin/Debug-linux/devka-core/libdevka-core.so
+ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -Wl,-rpath,'$$ORIGIN/../devka-core' -m64
 
 else ifeq ($(config),release)
 TARGETDIR = ../bin/Release-linux/devka-editor
 TARGET = $(TARGETDIR)/devka-editor
 OBJDIR = ../bin/Release-linux/.int/devka-editor
-DEFINES += -DDK_RELEASE
-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -O2
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -O2 -std=c++20
-LIBS += ../bin/Release-linux/common/libcommon.a ../bin/Release-linux/GLFW/libGLFW.a ../bin/Release-linux/ImGui/libImGui.a ../bin/Release-linux/devka-physics/libdevka-physics.so ../bin/Release-linux/devka-graphic/libdevka-graphic.so ../bin/Release-linux/devka-core/libdevka-core.a
-LDDEPS += ../bin/Release-linux/common/libcommon.a ../bin/Release-linux/GLFW/libGLFW.a ../bin/Release-linux/ImGui/libImGui.a ../bin/Release-linux/devka-physics/libdevka-physics.so ../bin/Release-linux/devka-graphic/libdevka-graphic.so ../bin/Release-linux/devka-core/libdevka-core.a
-ALL_LDFLAGS += $(LDFLAGS) -Wl,-rpath,'$$ORIGIN/../devka-physics' -Wl,-rpath,'$$ORIGIN/../devka-graphic' -s
+DEFINES += -DDK_DLL_IMPORT -DDK_PLATFORM_LINUX -DDK_RELEASE
+ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O2
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -std=c++20
+LIBS += ../bin/Release-linux/common/libcommon.a ../bin/Release-linux/devka-core/libdevka-core.so
+LDDEPS += ../bin/Release-linux/common/libcommon.a ../bin/Release-linux/devka-core/libdevka-core.so
+ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -Wl,-rpath,'$$ORIGIN/../devka-core' -m64 -s
 
 endif
 

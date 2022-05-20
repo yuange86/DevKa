@@ -7,6 +7,9 @@ project "common"
     targetdir("%{wks.location}/" .. outputdir .. "/%{prj.name}")
     objdir("%{wks.location}/" .. outputdir .. "/.int/%{prj.name}")
 
+    pchheader "src/common/pch/commonpch.hpp"
+    pchsource "commonpch.cpp"
+
     includedirs {
         "src",
         "%{IncludeDirs.spdlog}",
@@ -20,7 +23,9 @@ project "common"
 
     filter "system:linux"
         systemversion "latest"
-        defines{}
+        defines {
+            "DK_PLATFORM_LINUX",
+        }
 
     filter "configurations:Debug"
         defines "DK_DEBUG"

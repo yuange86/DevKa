@@ -74,7 +74,7 @@ ifneq (,$(devka_core_config))
 	@${MAKE} --no-print-directory -C devka-core -f Makefile config=$(devka_core_config)
 endif
 
-devka-editor: common GLFW ImGui devka-physics devka-graphic devka-core
+devka-editor: common devka-core
 ifneq (,$(devka_editor_config))
 	@echo "==== Building devka-editor ($(devka_editor_config)) ===="
 	@${MAKE} --no-print-directory -C devka-editor -f Makefile config=$(devka_editor_config)
