@@ -1,14 +1,12 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # GNU Make 4.3
- 
 # Built for x86_64-pc-linux-gnu
- 
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat May 21 23:05:30 2022
+# Make data base, printed on Sun May 22 02:46:12 2022
 
 # Variables
 
@@ -16,13 +14,12 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 GDK_BACKEND = x11
 # environment
 LC_ALL = C
- 
-# makefile (from 'Makefile', line 13)
+# makefile (from 'Makefile', line 14)
 ImGui_config = debug
-# makefile (from 'Makefile', line 18)
+# makefile (from 'Makefile', line 19)
 devka_editor_config = debug
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-c504b8b3-232c-48ad-adcd-c05e858b7061.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-23c14b64-1de7-49e9-95ba-78cf255594f9.sock
 # environment
 LC_NAME = ko_KR.UTF-8
 # environment
@@ -116,14 +113,14 @@ ZSH = /home/io-yologram/.oh-my-zsh
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 1682
+VSCODE_PID = 97933
 # environment
 XDG_SESSION_TYPE = x11
-# makefile (from 'Makefile', line 33)
-PROJECTS := GLFW ImGui common devka-physics devka-graphic devka-core devka-editor
+# makefile (from 'Makefile', line 35)
+PROJECTS := GLFW Glad ImGui common devka-physics devka-graphic devka-core devka-editor
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
-# makefile (from 'Makefile', line 16)
+# makefile (from 'Makefile', line 17)
 devka_graphic_config = debug
 # environment
 SESSION_MANAGER = local/sonyMac-DevKa:@/tmp/.ICE-unix/921,unix/sonyMac-DevKa:/tmp/.ICE-unix/921
@@ -148,9 +145,8 @@ MAKECMDGOALS := all
 # environment
 XMODIFIERS = @im=ibus
 # environment
- 
 SHLVL = 0
-# makefile (from 'Makefile', line 17)
+# makefile (from 'Makefile', line 18)
 devka_core_config = debug
 # environment
 MAKELEVEL := 0
@@ -176,7 +172,7 @@ LC_TELEPHONE = ko_KR.UTF-8
 ?F = $(notdir $?)
 # environment
 XDG_CURRENT_DESKTOP = Budgie:GNOME
-# makefile (from 'Makefile', line 14)
+# makefile (from 'Makefile', line 15)
 common_config = debug
 # environment
 LS_COLORS = 
@@ -190,7 +186,7 @@ LESS = -R
 DESKTOP_SESSION = budgie-desktop
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = Budgie:GNOME
-# makefile (from 'Makefile', line 15)
+# makefile (from 'Makefile', line 16)
 devka_physics_config = debug
 # 'override' directive
 GNUMAKEFLAGS := 
@@ -211,7 +207,7 @@ MAKE_VERSION := 4.3
 # environment
 LC_MEASUREMENT = ko_KR.UTF-8
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 1682
+GIO_LAUNCHED_DESKTOP_FILE_PID = 97933
 # environment
 PAGER = less
 # environment
@@ -250,6 +246,8 @@ config = debug
 SUFFIXES := 
 # makefile (from 'Makefile', line 8)
 SILENT = @
+# makefile (from 'Makefile', line 13)
+Glad_config = debug
 # environment
 XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/io-yologram
 # default
@@ -261,7 +259,7 @@ GDMSESSION = budgie-desktop
 # environment
 LC_IDENTIFICATION = ko_KR.UTF-8
 # variable set hash-table stats:
-# Load=123/1024=12%, Rehash=0, Collisions=9/172=5%
+# Load=124/1024=12%, Rehash=0, Collisions=9/174=5%
 
 # Pattern-specific Variable Values
 
@@ -279,23 +277,24 @@ LC_IDENTIFICATION = ko_KR.UTF-8
 
 # Files
 
-devka-editor: common devka-core
+devka-editor: common devka-core GLFW Glad
+ 
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 79):
+#  recipe to execute (from 'Makefile', line 87):
 	@echo "==== Building devka-editor ($(devka_editor_config)) ===="
 	@${MAKE} --no-print-directory -C devka-editor -f Makefile config=$(devka_editor_config)
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-21 22:04:13.202679281
+#  Last modified 2022-05-22 02:10:30.247339385
 #  File has been updated.
 #  Successfully updated.
 
-3rdparty: GLFW ImGui
+3rdparty: GLFW Glad ImGui
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
@@ -306,8 +305,9 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 84):
+#  recipe to execute (from 'Makefile', line 92):
 	@${MAKE} --no-print-directory -C devka-graphic/3rdparty/glfw -f Makefile clean
+	@${MAKE} --no-print-directory -C devka-graphic/3rdparty/glad -f Makefile clean
 	@${MAKE} --no-print-directory -C devka-graphic/3rdparty/imgui -f Makefile clean
 	@${MAKE} --no-print-directory -C common -f Makefile clean
 	@${MAKE} --no-print-directory -C devka-physics -f Makefile clean
@@ -320,7 +320,7 @@ devka-physics: common
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 61):
+#  recipe to execute (from 'Makefile', line 69):
 	@echo "==== Building devka-physics ($(devka_physics_config)) ===="
 	@${MAKE} --no-print-directory -C devka-physics -f Makefile config=$(devka_physics_config)
 
@@ -349,7 +349,7 @@ GLFW:
 # | := 
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=2/15=13%
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@echo "==== Building GLFW ($(GLFW_config)) ===="
 	@${MAKE} --no-print-directory -C devka-graphic/3rdparty/glfw -f Makefile config=$(GLFW_config)
 
@@ -358,9 +358,18 @@ ImGui:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 49):
+#  recipe to execute (from 'Makefile', line 57):
 	@echo "==== Building ImGui ($(ImGui_config)) ===="
 	@${MAKE} --no-print-directory -C devka-graphic/3rdparty/imgui -f Makefile config=$(ImGui_config)
+
+Glad:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 51):
+	@echo "==== Building Glad ($(Glad_config)) ===="
+	@${MAKE} --no-print-directory -C devka-graphic/3rdparty/glad -f Makefile config=$(Glad_config)
 
 # Not a target:
 .DEFAULT:
@@ -373,11 +382,11 @@ devka-core: devka-physics devka-graphic
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 73):
+#  recipe to execute (from 'Makefile', line 81):
 	@echo "==== Building devka-core ($(devka_core_config)) ===="
 	@${MAKE} --no-print-directory -C devka-core -f Makefile config=$(devka_core_config)
 
-all: GLFW ImGui common devka-physics devka-graphic devka-core devka-editor
+all: GLFW Glad ImGui common devka-physics devka-graphic devka-core devka-editor
 #  Phony target (prerequisite of .PHONY).
 #  Command line target.
 #  Implicit rule search has not been done.
@@ -392,7 +401,7 @@ help:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 93):
+#  recipe to execute (from 'Makefile', line 102):
 	@echo "Usage: make [config=name] [target]"
 	@echo ""
 	@echo "CONFIGURATIONS:"
@@ -403,6 +412,7 @@ help:
 	@echo "   all (default)"
 	@echo "   clean"
 	@echo "   GLFW"
+	@echo "   Glad"
 	@echo "   ImGui"
 	@echo "   common"
 	@echo "   devka-physics"
@@ -418,18 +428,17 @@ help:
 #  Modification time never checked.
 #  File has not been updated.
 
-.PHONY: all clean help GLFW ImGui common devka-physics devka-graphic devka-core devka-editor 3rdparty
+.PHONY: all clean help GLFW Glad ImGui common devka-physics devka-graphic devka-core devka-editor 3rdparty
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-devka-graphic: common GLFW ImGui
+devka-graphic: common GLFW ImGui Glad
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
- 
-#  recipe to execute (from 'Makefile', line 67):
+#  recipe to execute (from 'Makefile', line 75):
 	@echo "==== Building devka-graphic ($(devka_graphic_config)) ===="
 	@${MAKE} --no-print-directory -C devka-graphic -f Makefile config=$(devka_graphic_config)
 
@@ -438,24 +447,24 @@ common:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 55):
+#  recipe to execute (from 'Makefile', line 63):
 	@echo "==== Building common ($(common_config)) ===="
 	@${MAKE} --no-print-directory -C common -f Makefile config=$(common_config)
 
 # files hash-table stats:
-# Load=15/1024=1%, Rehash=0, Collisions=0/65=0%
+# Load=16/1024=2%, Rehash=0, Collisions=0/73=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 28 / storage = 257 B / avg = 9 B
-# current buf: size = 8162 B / used = 257 B / count = 28 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 29 / storage = 262 B / avg = 9 B
+# current buf: size = 8162 B / used = 262 B / count = 29 / avg = 9 B
 
-# strcache performance: lookups = 79 / hit rate = 64%
+# strcache performance: lookups = 87 / hit rate = 66%
 # hash-table stats:
-# Load=28/8192=0%, Rehash=0, Collisions=0/79=0%
-# Finished Make data base on Sat May 21 23:05:30 2022
+# Load=29/8192=0%, Rehash=0, Collisions=0/87=0%
+# Finished Make data base on Sun May 22 02:46:12 2022
 
  

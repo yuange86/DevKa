@@ -1,44 +1,156 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/io-yologram/solutions/Engine/devka'
- 
 echo "==== Building GLFW (debug) ===="
 make --no-print-directory -C devka-graphic/3rdparty/glfw -f Makefile config=debug
  
+echo Creating ../../../bin/Debug-linux/.int/GLFW
+mkdir -p ../../../bin/Debug-linux/.int/GLFW
+echo context.c
+cc   -MMD -MP -D_GLFW_X11  -m64 -fPIC -g  -o "../../../bin/Debug-linux/.int/GLFW/context.o" -MF "../../../bin/Debug-linux/.int/GLFW/context.d" -c "src/context.c"
+echo egl_context.c
+cc   -MMD -MP -D_GLFW_X11  -m64 -fPIC -g  -o "../../../bin/Debug-linux/.int/GLFW/egl_context.o" -MF "../../../bin/Debug-linux/.int/GLFW/egl_context.d" -c "src/egl_context.c"
+echo glx_context.c
+cc   -MMD -MP -D_GLFW_X11  -m64 -fPIC -g  -o "../../../bin/Debug-linux/.int/GLFW/glx_context.o" -MF "../../../bin/Debug-linux/.int/GLFW/glx_context.d" -c "src/glx_context.c"
+echo init.c
+cc   -MMD -MP -D_GLFW_X11  -m64 -fPIC -g  -o "../../../bin/Debug-linux/.int/GLFW/init.o" -MF "../../../bin/Debug-linux/.int/GLFW/init.d" -c "src/init.c"
+echo input.c
+cc   -MMD -MP -D_GLFW_X11  -m64 -fPIC -g  -o "../../../bin/Debug-linux/.int/GLFW/input.o" -MF "../../../bin/Debug-linux/.int/GLFW/input.d" -c "src/input.c"
+echo linux_joystick.c
+cc   -MMD -MP -D_GLFW_X11  -m64 -fPIC -g  -o "../../../bin/Debug-linux/.int/GLFW/linux_joystick.o" -MF "../../../bin/Debug-linux/.int/GLFW/linux_joystick.d" -c "src/linux_joystick.c"
+echo monitor.c
+cc   -MMD -MP -D_GLFW_X11  -m64 -fPIC -g  -o "../../../bin/Debug-linux/.int/GLFW/monitor.o" -MF "../../../bin/Debug-linux/.int/GLFW/monitor.d" -c "src/monitor.c"
+echo null_init.c
+cc   -MMD -MP -D_GLFW_X11  -m64 -fPIC -g  -o "../../../bin/Debug-linux/.int/GLFW/null_init.o" -MF "../../../bin/Debug-linux/.int/GLFW/null_init.d" -c "src/null_init.c"
+echo null_joystick.c
+cc   -MMD -MP -D_GLFW_X11  -m64 -fPIC -g  -o "../../../bin/Debug-linux/.int/GLFW/null_joystick.o" -MF "../../../bin/Debug-linux/.int/GLFW/null_joystick.d" -c "src/null_joystick.c"
+echo null_monitor.c
+cc   -MMD -MP -D_GLFW_X11  -m64 -fPIC -g  -o "../../../bin/Debug-linux/.int/GLFW/null_monitor.o" -MF "../../../bin/Debug-linux/.int/GLFW/null_monitor.d" -c "src/null_monitor.c"
+echo null_window.c
+cc   -MMD -MP -D_GLFW_X11  -m64 -fPIC -g  -o "../../../bin/Debug-linux/.int/GLFW/null_window.o" -MF "../../../bin/Debug-linux/.int/GLFW/null_window.d" -c "src/null_window.c"
+echo osmesa_context.c
+cc   -MMD -MP -D_GLFW_X11  -m64 -fPIC -g  -o "../../../bin/Debug-linux/.int/GLFW/osmesa_context.o" -MF "../../../bin/Debug-linux/.int/GLFW/osmesa_context.d" -c "src/osmesa_context.c"
+echo platform.c
+cc   -MMD -MP -D_GLFW_X11  -m64 -fPIC -g  -o "../../../bin/Debug-linux/.int/GLFW/platform.o" -MF "../../../bin/Debug-linux/.int/GLFW/platform.d" -c "src/platform.c"
+echo posix_module.c
+cc   -MMD -MP -D_GLFW_X11  -m64 -fPIC -g  -o "../../../bin/Debug-linux/.int/GLFW/posix_module.o" -MF "../../../bin/Debug-linux/.int/GLFW/posix_module.d" -c "src/posix_module.c"
+echo posix_thread.c
+cc   -MMD -MP -D_GLFW_X11  -m64 -fPIC -g  -o "../../../bin/Debug-linux/.int/GLFW/posix_thread.o" -MF "../../../bin/Debug-linux/.int/GLFW/posix_thread.d" -c "src/posix_thread.c"
+echo posix_time.c
+cc   -MMD -MP -D_GLFW_X11  -m64 -fPIC -g  -o "../../../bin/Debug-linux/.int/GLFW/posix_time.o" -MF "../../../bin/Debug-linux/.int/GLFW/posix_time.d" -c "src/posix_time.c"
+echo vulkan.c
+cc   -MMD -MP -D_GLFW_X11  -m64 -fPIC -g  -o "../../../bin/Debug-linux/.int/GLFW/vulkan.o" -MF "../../../bin/Debug-linux/.int/GLFW/vulkan.d" -c "src/vulkan.c"
+echo window.c
+cc   -MMD -MP -D_GLFW_X11  -m64 -fPIC -g  -o "../../../bin/Debug-linux/.int/GLFW/window.o" -MF "../../../bin/Debug-linux/.int/GLFW/window.d" -c "src/window.c"
+echo x11_init.c
+cc   -MMD -MP -D_GLFW_X11  -m64 -fPIC -g  -o "../../../bin/Debug-linux/.int/GLFW/x11_init.o" -MF "../../../bin/Debug-linux/.int/GLFW/x11_init.d" -c "src/x11_init.c"
+echo x11_monitor.c
+cc   -MMD -MP -D_GLFW_X11  -m64 -fPIC -g  -o "../../../bin/Debug-linux/.int/GLFW/x11_monitor.o" -MF "../../../bin/Debug-linux/.int/GLFW/x11_monitor.d" -c "src/x11_monitor.c"
+echo x11_window.c
+cc   -MMD -MP -D_GLFW_X11  -m64 -fPIC -g  -o "../../../bin/Debug-linux/.int/GLFW/x11_window.o" -MF "../../../bin/Debug-linux/.int/GLFW/x11_window.d" -c "src/x11_window.c"
+echo xkb_unicode.c
+cc   -MMD -MP -D_GLFW_X11  -m64 -fPIC -g  -o "../../../bin/Debug-linux/.int/GLFW/xkb_unicode.o" -MF "../../../bin/Debug-linux/.int/GLFW/xkb_unicode.d" -c "src/xkb_unicode.c"
+echo Creating ../../../bin/Debug-linux/GLFW
+mkdir -p ../../../bin/Debug-linux/GLFW
+echo Linking GLFW
+ar -rcs "../../../bin/Debug-linux/GLFW/libGLFW.a" ../../../bin/Debug-linux/.int/GLFW/context.o ../../../bin/Debug-linux/.int/GLFW/egl_context.o ../../../bin/Debug-linux/.int/GLFW/glx_context.o ../../../bin/Debug-linux/.int/GLFW/init.o ../../../bin/Debug-linux/.int/GLFW/input.o ../../../bin/Debug-linux/.int/GLFW/linux_joystick.o ../../../bin/Debug-linux/.int/GLFW/monitor.o ../../../bin/Debug-linux/.int/GLFW/null_init.o ../../../bin/Debug-linux/.int/GLFW/null_joystick.o ../../../bin/Debug-linux/.int/GLFW/null_monitor.o ../../../bin/Debug-linux/.int/GLFW/null_window.o ../../../bin/Debug-linux/.int/GLFW/osmesa_context.o ../../../bin/Debug-linux/.int/GLFW/platform.o ../../../bin/Debug-linux/.int/GLFW/posix_module.o ../../../bin/Debug-linux/.int/GLFW/posix_thread.o ../../../bin/Debug-linux/.int/GLFW/posix_time.o ../../../bin/Debug-linux/.int/GLFW/vulkan.o ../../../bin/Debug-linux/.int/GLFW/window.o ../../../bin/Debug-linux/.int/GLFW/x11_init.o ../../../bin/Debug-linux/.int/GLFW/x11_monitor.o ../../../bin/Debug-linux/.int/GLFW/x11_window.o ../../../bin/Debug-linux/.int/GLFW/xkb_unicode.o
 :
- 
+echo "==== Building Glad (debug) ===="
+make --no-print-directory -C devka-graphic/3rdparty/glad -f Makefile config=debug
+echo Creating ../../../bin/Debug-linux/.int/Glad
+mkdir -p ../../../bin/Debug-linux/.int/Glad
+echo glad.c
+cc   -MMD -MP  -Iinclude -m64 -g  -o "../../../bin/Debug-linux/.int/Glad/glad.o" -MF "../../../bin/Debug-linux/.int/Glad/glad.d" -c "src/glad.c"
+echo Creating ../../../bin/Debug-linux/Glad
+mkdir -p ../../../bin/Debug-linux/Glad
+echo Linking Glad
+ar -rcs "../../../bin/Debug-linux/Glad/libGlad.a" ../../../bin/Debug-linux/.int/Glad/glad.o
+:
 echo "==== Building ImGui (debug) ===="
 make --no-print-directory -C devka-graphic/3rdparty/imgui -f Makefile config=debug
- 
+echo Creating ../../../bin/Debug-linux/.int/ImGui
+mkdir -p ../../../bin/Debug-linux/.int/ImGui
+echo imgui.cpp
+g++   -MMD -MP   -m64 -fPIC -g -std=c++20  -o "../../../bin/Debug-linux/.int/ImGui/imgui.o" -MF "../../../bin/Debug-linux/.int/ImGui/imgui.d" -c "imgui.cpp"
+echo imgui_demo.cpp
+g++   -MMD -MP   -m64 -fPIC -g -std=c++20  -o "../../../bin/Debug-linux/.int/ImGui/imgui_demo.o" -MF "../../../bin/Debug-linux/.int/ImGui/imgui_demo.d" -c "imgui_demo.cpp"
+echo imgui_draw.cpp
+g++   -MMD -MP   -m64 -fPIC -g -std=c++20  -o "../../../bin/Debug-linux/.int/ImGui/imgui_draw.o" -MF "../../../bin/Debug-linux/.int/ImGui/imgui_draw.d" -c "imgui_draw.cpp"
+echo imgui_tables.cpp
+g++   -MMD -MP   -m64 -fPIC -g -std=c++20  -o "../../../bin/Debug-linux/.int/ImGui/imgui_tables.o" -MF "../../../bin/Debug-linux/.int/ImGui/imgui_tables.d" -c "imgui_tables.cpp"
+echo imgui_widgets.cpp
+g++   -MMD -MP   -m64 -fPIC -g -std=c++20  -o "../../../bin/Debug-linux/.int/ImGui/imgui_widgets.o" -MF "../../../bin/Debug-linux/.int/ImGui/imgui_widgets.d" -c "imgui_widgets.cpp"
+echo Creating ../../../bin/Debug-linux/ImGui
+mkdir -p ../../../bin/Debug-linux/ImGui
+echo Linking ImGui
+ar -rcs "../../../bin/Debug-linux/ImGui/libImGui.a" ../../../bin/Debug-linux/.int/ImGui/imgui.o ../../../bin/Debug-linux/.int/ImGui/imgui_demo.o ../../../bin/Debug-linux/.int/ImGui/imgui_draw.o ../../../bin/Debug-linux/.int/ImGui/imgui_tables.o ../../../bin/Debug-linux/.int/ImGui/imgui_widgets.o
 :
- 
 echo "==== Building common (debug) ===="
 make --no-print-directory -C common -f Makefile config=debug
- 
+echo Creating ../bin/Debug-linux/.int/common
+mkdir -p ../bin/Debug-linux/.int/common
+echo commonpch.hpp
+g++ -x c++-header   -MMD -MP -DDK_PLATFORM_LINUX -DDK_DEBUG -Isrc -I3rdparty/spdlog/include -m64 -g -std=c++20 -o "../bin/Debug-linux/.int/common/commonpch.hpp.gch" -MF "../bin/Debug-linux/.int/common/commonpch.hpp.d" -c "src/common/pch/commonpch.hpp"
+touch "../bin/Debug-linux/.int/common/commonpch.hpp"
+echo commonpch.cpp
+g++ -include ../bin/Debug-linux/.int/common/commonpch.hpp   -MMD -MP -DDK_PLATFORM_LINUX -DDK_DEBUG -Isrc -I3rdparty/spdlog/include -m64 -g -std=c++20  -o "../bin/Debug-linux/.int/common/commonpch.o" -MF "../bin/Debug-linux/.int/common/commonpch.d" -c "src/common/pch/commonpch.cpp"
+echo log.cpp
+g++ -include ../bin/Debug-linux/.int/common/commonpch.hpp   -MMD -MP -DDK_PLATFORM_LINUX -DDK_DEBUG -Isrc -I3rdparty/spdlog/include -m64 -g -std=c++20  -o "../bin/Debug-linux/.int/common/log.o" -MF "../bin/Debug-linux/.int/common/log.d" -c "src/common/log/log.cpp"
+echo memory.cpp
+g++ -include ../bin/Debug-linux/.int/common/commonpch.hpp   -MMD -MP -DDK_PLATFORM_LINUX -DDK_DEBUG -Isrc -I3rdparty/spdlog/include -m64 -g -std=c++20  -o "../bin/Debug-linux/.int/common/memory.o" -MF "../bin/Debug-linux/.int/common/memory.d" -c "src/common/memory/memory.cpp"
+echo platform_linux.cpp
+g++ -include ../bin/Debug-linux/.int/common/commonpch.hpp   -MMD -MP -DDK_PLATFORM_LINUX -DDK_DEBUG -Isrc -I3rdparty/spdlog/include -m64 -g -std=c++20  -o "../bin/Debug-linux/.int/common/platform_linux.o" -MF "../bin/Debug-linux/.int/common/platform_linux.d" -c "src/common/platform/platform_linux.cpp"
+echo Creating ../bin/Debug-linux/common
+mkdir -p ../bin/Debug-linux/common
+echo Linking common
+ar -rcs "../bin/Debug-linux/common/libcommon.a" ../bin/Debug-linux/.int/common/commonpch.o ../bin/Debug-linux/.int/common/log.o ../bin/Debug-linux/.int/common/memory.o ../bin/Debug-linux/.int/common/platform_linux.o
 :
- 
 echo "==== Building devka-physics (debug) ===="
 make --no-print-directory -C devka-physics -f Makefile config=debug
  
+echo Creating ../bin/Debug-linux/devka-physics
+mkdir -p ../bin/Debug-linux/devka-physics
 echo Linking devka-physics
 ar -rcs "../bin/Debug-linux/devka-physics/libdevka-physics.a" 
 :
- 
 echo "==== Building devka-graphic (debug) ===="
 make --no-print-directory -C devka-graphic -f Makefile config=debug
- 
+echo Creating ../bin/Debug-linux/.int/devka-graphic
+mkdir -p ../bin/Debug-linux/.int/devka-graphic
+echo glfw_gl_init.cpp
+g++   -MMD -MP -DDK_PLATFORM_LINUX -DDK_DEBUG -Isrc -I../common/3rdparty/spdlog/include -I../common/src -I3rdparty/glfw/include -I3rdparty/glad/include -I3rdparty/imgui -m64 -fPIC -g -std=c++20  -o "../bin/Debug-linux/.int/devka-graphic/glfw_gl_init.o" -MF "../bin/Debug-linux/.int/devka-graphic/glfw_gl_init.d" -c "src/devka-graphic/preinit/glfw_gl_init.cpp"
+echo graphic_handle.cpp
+g++   -MMD -MP -DDK_PLATFORM_LINUX -DDK_DEBUG -Isrc -I../common/3rdparty/spdlog/include -I../common/src -I3rdparty/glfw/include -I3rdparty/glad/include -I3rdparty/imgui -m64 -fPIC -g -std=c++20  -o "../bin/Debug-linux/.int/devka-graphic/graphic_handle.o" -MF "../bin/Debug-linux/.int/devka-graphic/graphic_handle.d" -c "src/devka-graphic/context/graphic_handle.cpp"
+echo Creating ../bin/Debug-linux/devka-graphic
+mkdir -p ../bin/Debug-linux/devka-graphic
+echo Linking devka-graphic
+ar -rcs "../bin/Debug-linux/devka-graphic/libdevka-graphic.a" ../bin/Debug-linux/.int/devka-graphic/glfw_gl_init.o ../bin/Debug-linux/.int/devka-graphic/graphic_handle.o
 :
- 
 echo "==== Building devka-core (debug) ===="
 make --no-print-directory -C devka-core -f Makefile config=debug
- 
+echo Creating ../bin/Debug-linux/.int/devka-core
+mkdir -p ../bin/Debug-linux/.int/devka-core
+echo commonpch.hpp
+g++ -x c++-header   -MMD -MP -DDK_DLL -DDK_PLATFORM_LINUX -DDK_DEBUG -Isrc -I../common/3rdparty/spdlog/include -I../common/src -I../devka-graphic/3rdparty/glfw/include -I../devka-graphic/3rdparty/glad/include -I../devka-graphic/3rdparty/imgui -I../devka-graphic/src -I../devka-physics/src -m64 -fPIC -g -std=c++20 -o "../bin/Debug-linux/.int/devka-core/commonpch.hpp.gch" -MF "../bin/Debug-linux/.int/devka-core/commonpch.hpp.d" -c "../common/src/common/pch/commonpch.hpp"
+touch "../bin/Debug-linux/.int/devka-core/commonpch.hpp"
+echo engine.cpp
+g++ -include ../bin/Debug-linux/.int/devka-core/commonpch.hpp   -MMD -MP -DDK_DLL -DDK_PLATFORM_LINUX -DDK_DEBUG -Isrc -I../common/3rdparty/spdlog/include -I../common/src -I../devka-graphic/3rdparty/glfw/include -I../devka-graphic/3rdparty/glad/include -I../devka-graphic/3rdparty/imgui -I../devka-graphic/src -I../devka-physics/src -m64 -fPIC -g -std=c++20  -o "../bin/Debug-linux/.int/devka-core/engine.o" -MF "../bin/Debug-linux/.int/devka-core/engine.d" -c "src/devka-core/core/engine.cpp"
+echo window.cpp
+g++ -include ../bin/Debug-linux/.int/devka-core/commonpch.hpp   -MMD -MP -DDK_DLL -DDK_PLATFORM_LINUX -DDK_DEBUG -Isrc -I../common/3rdparty/spdlog/include -I../common/src -I../devka-graphic/3rdparty/glfw/include -I../devka-graphic/3rdparty/glad/include -I../devka-graphic/3rdparty/imgui -I../devka-graphic/src -I../devka-physics/src -m64 -fPIC -g -std=c++20  -o "../bin/Debug-linux/.int/devka-core/window.o" -MF "../bin/Debug-linux/.int/devka-core/window.d" -c "src/devka-core/core/window.cpp"
+echo Creating ../bin/Debug-linux/devka-core
+mkdir -p ../bin/Debug-linux/devka-core
+echo Linking devka-core
+g++ -o "../bin/Debug-linux/devka-core/libdevka-core.so" ../bin/Debug-linux/.int/devka-core/engine.o ../bin/Debug-linux/.int/devka-core/window.o   -L/usr/lib64 -m64 -shared -Wl,-soname=libdevka-core.so ../bin/Debug-linux/devka-physics/libdevka-physics.a ../bin/Debug-linux/devka-graphic/libdevka-graphic.a
 :
- 
 echo "==== Building devka-editor (debug) ===="
 make --no-print-directory -C devka-editor -f Makefile config=debug
- 
+echo Creating ../bin/Debug-linux/.int/devka-editor
+mkdir -p ../bin/Debug-linux/.int/devka-editor
+echo editor.cpp
+g++   -MMD -MP -DDK_DLL_IMPORT -DDK_PLATFORM_LINUX -DDK_DEBUG -Isrc -I../common/3rdparty/spdlog/include -I../common/src -I../devka-physics/src -I../devka-graphic/3rdparty/glfw/include -I../devka-graphic/3rdparty/glad/include -I../devka-graphic/3rdparty/imgui -I../devka-graphic/src -I../devka-core/src -m64 -g -std=c++20  -o "../bin/Debug-linux/.int/devka-editor/editor.o" -MF "../bin/Debug-linux/.int/devka-editor/editor.d" -c "src/editor.cpp"
+echo Creating ../bin/Debug-linux/devka-editor
+mkdir -p ../bin/Debug-linux/devka-editor
 echo Linking devka-editor
-g++ -o "../bin/Debug-linux/devka-editor/devka-editor" ../bin/Debug-linux/.int/devka-editor/editor.o   -L/usr/lib64 -Wl,-rpath,'$ORIGIN/../devka-core' -m64 ../bin/Debug-linux/common/libcommon.a ../bin/Debug-linux/devka-core/libdevka-core.so
+g++ -o "../bin/Debug-linux/devka-editor/devka-editor" ../bin/Debug-linux/.int/devka-editor/editor.o   -L/usr/lib64 -Wl,-rpath,'$ORIGIN/../devka-core' -m64 ../bin/Debug-linux/common/libcommon.a ../bin/Debug-linux/devka-core/libdevka-core.so ../bin/Debug-linux/GLFW/libGLFW.a ../bin/Debug-linux/Glad/libGlad.a
 :
- 
 make: Leaving directory '/home/io-yologram/solutions/Engine/devka'
  
