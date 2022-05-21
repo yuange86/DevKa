@@ -13,6 +13,7 @@ project "devka-editor"
         "%{IncludeDirs.common}",
         "%{IncludeDirs.physics}",
         "%{IncludeDirs.GLFW}",
+        "%{IncludeDirs.Glad}",
         "%{IncludeDirs.imgui}",
         "%{IncludeDirs.graphic}",
         "%{IncludeDirs.core}",
@@ -26,6 +27,8 @@ project "devka-editor"
     links {
         "common",
         "devka-core",
+        "glfw",
+        "Glad",
     }
 
     defines {
@@ -43,10 +46,16 @@ project "devka-editor"
         defines "DK_DEBUG"
         runtime "Debug"
         symbols "on"
+        -- buildoptions {
+        --     "-MDd"
+        -- }
 
     filter "configurations:Release"
         defines "DK_RELEASE"
         runtime "Release"
         optimize "on"
+        -- buildoptions {
+        --     "-MD"
+        -- }
 
 

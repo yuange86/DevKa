@@ -22,6 +22,8 @@
 #   define      DK_EXT
 #endif
 
+#define BIND_CLASS_FN(fn) [this](auto&&... args) -> decltype(auto) { return this->fn(std::forward<decltype(args)>(args)...); }
+
 
 #define ASSIGN_DEBUG_ONLY(variable, value)      variable = value
 

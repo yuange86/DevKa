@@ -10,6 +10,7 @@ endif
 
 ifeq ($(config),debug)
   GLFW_config = debug
+  Glad_config = debug
   ImGui_config = debug
   common_config = debug
   devka_physics_config = debug
@@ -19,6 +20,7 @@ ifeq ($(config),debug)
 
 else ifeq ($(config),release)
   GLFW_config = release
+  Glad_config = release
   ImGui_config = release
   common_config = release
   devka_physics_config = release
@@ -30,18 +32,24 @@ else
   $(error "invalid configuration $(config)")
 endif
 
-PROJECTS := GLFW ImGui common devka-physics devka-graphic devka-core devka-editor
+PROJECTS := GLFW Glad ImGui common devka-physics devka-graphic devka-core devka-editor
 
 .PHONY: all clean help $(PROJECTS) 3rdparty
 
 all: $(PROJECTS)
 
-3rdparty: GLFW ImGui
+3rdparty: GLFW Glad ImGui
 
 GLFW:
 ifneq (,$(GLFW_config))
 	@echo "==== Building GLFW ($(GLFW_config)) ===="
 	@${MAKE} --no-print-directory -C devka-graphic/3rdparty/glfw -f Makefile config=$(GLFW_config)
+endif
+
+Glad:
+ifneq (,$(Glad_config))
+	@echo "==== Building Glad ($(Glad_config)) ===="
+	@${MAKE} --no-print-directory -C devka-graphic/3rdparty/glad -f Makefile config=$(Glad_config)
 endif
 
 ImGui:
@@ -62,7 +70,7 @@ ifneq (,$(devka_physics_config))
 	@${MAKE} --no-print-directory -C devka-physics -f Makefile config=$(devka_physics_config)
 endif
 
-devka-graphic: common GLFW ImGui
+devka-graphic: common GLFW ImGui Glad
 ifneq (,$(devka_graphic_config))
 	@echo "==== Building devka-graphic ($(devka_graphic_config)) ===="
 	@${MAKE} --no-print-directory -C devka-graphic -f Makefile config=$(devka_graphic_config)
@@ -74,7 +82,7 @@ ifneq (,$(devka_core_config))
 	@${MAKE} --no-print-directory -C devka-core -f Makefile config=$(devka_core_config)
 endif
 
-devka-editor: common devka-core
+devka-editor: common devka-core GLFW Glad
 ifneq (,$(devka_editor_config))
 	@echo "==== Building devka-editor ($(devka_editor_config)) ===="
 	@${MAKE} --no-print-directory -C devka-editor -f Makefile config=$(devka_editor_config)
@@ -82,6 +90,7 @@ endif
 
 clean:
 	@${MAKE} --no-print-directory -C devka-graphic/3rdparty/glfw -f Makefile clean
+	@${MAKE} --no-print-directory -C devka-graphic/3rdparty/glad -f Makefile clean
 	@${MAKE} --no-print-directory -C devka-graphic/3rdparty/imgui -f Makefile clean
 	@${MAKE} --no-print-directory -C common -f Makefile clean
 	@${MAKE} --no-print-directory -C devka-physics -f Makefile clean
@@ -100,6 +109,7 @@ help:
 	@echo "   all (default)"
 	@echo "   clean"
 	@echo "   GLFW"
+	@echo "   Glad"
 	@echo "   ImGui"
 	@echo "   common"
 	@echo "   devka-physics"

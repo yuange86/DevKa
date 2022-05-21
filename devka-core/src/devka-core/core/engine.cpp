@@ -19,7 +19,7 @@ namespace dvk {
         return dvk::memory::alloc_type_default<DKEngine>(DKEngine(name));
     }
 
-    void DKEngine::example_main_window(WindowProc proc) {
+    void DKEngine::example_main_window(graphic::WindowProc proc) {
         this->main_window = new ExampleWindow(proc);
     }
 

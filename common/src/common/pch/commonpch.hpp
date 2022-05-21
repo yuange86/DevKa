@@ -1,7 +1,9 @@
 
+#include <vector>
 #include <memory>
 #include <string>
 #include <cstring>
+#include <unordered_set>
 #include <unordered_map>
 
 

@@ -12,6 +12,7 @@ project "devka-graphic"
         "%{IncludeDirs.spdlog}",
         "%{IncludeDirs.common}",
         "%{IncludeDirs.GLFW}",
+        "%{IncludeDirs.Glad}",
         "%{IncludeDirs.imgui}",
     }
 
@@ -24,10 +25,13 @@ project "devka-graphic"
         "common",
         "GLFW",
         "Imgui",
+        "Glad",
     }
 
 
     filter "system:linux"
+        pic "On"
+        
         systemversion "latest"
         defines {
             "DK_PLATFORM_LINUX",

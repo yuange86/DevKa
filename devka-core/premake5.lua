@@ -15,6 +15,7 @@ project "devka-core"
         "%{IncludeDirs.spdlog}",
         "%{IncludeDirs.common}",
         "%{IncludeDirs.GLFW}",
+        "%{IncludeDirs.Glad}",
         "%{IncludeDirs.imgui}",
         "%{IncludeDirs.graphic}",
         "%{IncludeDirs.physics}",
@@ -34,10 +35,6 @@ project "devka-core"
         "DK_DLL",
     }
 
-    -- postbuildcommands {
-    --     ("%{COPY} %{cfg.buildtarget.relpath} %{wks.location}/lib/" .. outputdir .. "/%{prj.name}"),
-    -- }
-
 
     filter "system:linux"
         systemversion "latest"
@@ -49,10 +46,16 @@ project "devka-core"
         defines "DK_DEBUG"
         runtime "Debug"
         symbols "on"
+        -- buildoptions {
+        --     "-MDd"
+        -- }
 
     filter "configurations:Release"
         defines "DK_RELEASE"
         runtime "Release"
         optimize "on"
+        -- buildoptions {
+        --     "-MD"
+        -- }
 
 

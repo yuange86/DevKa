@@ -18,7 +18,7 @@ namespace dvk {
         static Raw(DKEngine) create(const std::string& name);
 
 
-        void example_main_window(WindowProc proc);
+        void example_main_window(graphic::WindowProc proc);
         // void apply_main_window(Raw(IWindow) window);
 
     private:

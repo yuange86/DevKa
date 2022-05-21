@@ -19,11 +19,14 @@ endif
 # #############################################
 
 RESCOMP = windres
-INCLUDES += -Isrc -I../common/3rdparty/spdlog/include -I../common/src -I../devka-physics/src -I../devka-graphic/3rdparty/glfw/include -I../devka-graphic/3rdparty/glad/include -I../devka-graphic/3rdparty/imgui -I../devka-graphic/src -I../devka-core/src
+DEFINES +=
+INCLUDES += -Iinclude
 FORCE_INCLUDE +=
 ALL_CPPFLAGS += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
 ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-LINKCMD = $(CXX) -o "$@" $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
+LIBS +=
+LDDEPS +=
+LINKCMD = $(AR) -rcs "$@" $(OBJECTS)
 define PREBUILDCMDS
 endef
 define PRELINKCMDS
@@ -32,26 +35,20 @@ define POSTBUILDCMDS
 endef
 
 ifeq ($(config),debug)
-TARGETDIR = ../bin/Debug-linux/devka-editor
-TARGET = $(TARGETDIR)/devka-editor
-OBJDIR = ../bin/Debug-linux/.int/devka-editor
-DEFINES += -DDK_DLL_IMPORT -DDK_PLATFORM_LINUX -DDK_DEBUG
+TARGETDIR = ../../../bin/Debug-linux/Glad
+TARGET = $(TARGETDIR)/libGlad.a
+OBJDIR = ../../../bin/Debug-linux/.int/Glad
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -g
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -g -std=c++20
-LIBS += ../bin/Debug-linux/common/libcommon.a ../bin/Debug-linux/devka-core/libdevka-core.so ../bin/Debug-linux/GLFW/libGLFW.a ../bin/Debug-linux/Glad/libGlad.a
-LDDEPS += ../bin/Debug-linux/common/libcommon.a ../bin/Debug-linux/devka-core/libdevka-core.so ../bin/Debug-linux/GLFW/libGLFW.a ../bin/Debug-linux/Glad/libGlad.a
-ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -Wl,-rpath,'$$ORIGIN/../devka-core' -m64
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -g
+ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64
 
 else ifeq ($(config),release)
-TARGETDIR = ../bin/Release-linux/devka-editor
-TARGET = $(TARGETDIR)/devka-editor
-OBJDIR = ../bin/Release-linux/.int/devka-editor
-DEFINES += -DDK_DLL_IMPORT -DDK_PLATFORM_LINUX -DDK_RELEASE
+TARGETDIR = ../../../bin/Release-linux/Glad
+TARGET = $(TARGETDIR)/libGlad.a
+OBJDIR = ../../../bin/Release-linux/.int/Glad
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O2
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -std=c++20
-LIBS += ../bin/Release-linux/common/libcommon.a ../bin/Release-linux/devka-core/libdevka-core.so ../bin/Release-linux/GLFW/libGLFW.a ../bin/Release-linux/Glad/libGlad.a
-LDDEPS += ../bin/Release-linux/common/libcommon.a ../bin/Release-linux/devka-core/libdevka-core.so ../bin/Release-linux/GLFW/libGLFW.a ../bin/Release-linux/Glad/libGlad.a
-ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -Wl,-rpath,'$$ORIGIN/../devka-core' -m64 -s
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O2
+ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64 -s
 
 endif
 
@@ -65,8 +62,8 @@ endif
 GENERATED :=
 OBJECTS :=
 
-GENERATED += $(OBJDIR)/editor.o
-OBJECTS += $(OBJDIR)/editor.o
+GENERATED += $(OBJDIR)/glad.o
+OBJECTS += $(OBJDIR)/glad.o
 
 # Rules
 # #############################################
@@ -76,7 +73,7 @@ all: $(TARGET)
 
 $(TARGET): $(GENERATED) $(OBJECTS) $(LDDEPS) | $(TARGETDIR)
 	$(PRELINKCMDS)
-	@echo Linking devka-editor
+	@echo Linking Glad
 	$(SILENT) $(LINKCMD)
 	$(POSTBUILDCMDS)
 
@@ -97,7 +94,7 @@ else
 endif
 
 clean:
-	@echo Cleaning devka-editor
+	@echo Cleaning Glad
 ifeq (posix,$(SHELLTYPE))
 	$(SILENT) rm -f  $(TARGET)
 	$(SILENT) rm -rf $(GENERATED)
@@ -115,7 +112,7 @@ ifneq (,$(PCH))
 $(OBJECTS): $(GCH) | $(PCH_PLACEHOLDER)
 $(GCH): $(PCH) | prebuild
 	@echo $(notdir $<)
-	$(SILENT) $(CXX) -x c++-header $(ALL_CXXFLAGS) -o "$@" -MF "$(@:%.gch=%.d)" -c "$<"
+	$(SILENT) $(CC) -x c-header $(ALL_CFLAGS) -o "$@" -MF "$(@:%.gch=%.d)" -c "$<"
 $(PCH_PLACEHOLDER): $(GCH) | $(OBJDIR)
 ifeq (posix,$(SHELLTYPE))
 	$(SILENT) touch "$@"
@@ -130,9 +127,9 @@ endif
 # File Rules
 # #############################################
 
-$(OBJDIR)/editor.o: src/editor.cpp
+$(OBJDIR)/glad.o: src/glad.c
 	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 
 -include $(OBJECTS:%.o=%.d)
 ifneq (,$(PCH))

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "common/base/macro.hpp"
+#include "common/data/primitives.hpp"
 
 #pragma warning(push, 0)
 #include <spdlog/spdlog.h>
@@ -44,9 +44,9 @@ namespace dvk
 
 #define DK_TRACE(code, ...)        ::dvk::SpdLog::get_logger(code)->trace(__VA_ARGS__)
 #define DK_INFO(code, ...)         ::dvk::SpdLog::get_logger(code)->info(__VA_ARGS__)
-#define DK_WARN(code, ...)         ::dvk::SpdLog::get_logger(code)->warning(__VA_ARGS__)
+#define DK_WARN(code, ...)         ::dvk::SpdLog::get_logger(code)->warn(__VA_ARGS__)
 #define DK_ERROR(code, ...)        ::dvk::SpdLog::get_logger(code)->error(__VA_ARGS__)
-#define DK_FATAL(code, ...)        ::dvk::SpdLog::get_logger(code)->fatal(__VA_ARGS__)
+#define DK_FATAL(code, ...)        ::dvk::SpdLog::get_logger(code)->critical(__VA_ARGS__)
 
 
 #define DK_DEFAULT_TRACE(...)        ::dvk::SpdLog::get_logger(0)->trace(__VA_ARGS__)
@@ -58,11 +58,11 @@ namespace dvk
 
 //  example 
 //  ---    dvk::SpdLog::create_logger(<code>, <mid_name>);\
-//  ---    #define DK_<mid_name>_TRACE(...)        ::dvk::SpdLog::get_logger(<code>)->trace(__VA_ARGS__)
-//  ---    #define DK_<mid_name>_INFO(...)         ::dvk::SpdLog::get_logger(<code>)->info(__VA_ARGS__)
-//  ---    #define DK_<mid_name>_WARN(...)         ::dvk::SpdLog::get_logger(<code>)->warning(__VA_ARGS__)
-//  ---    #define DK_<mid_name>_ERROR(...)        ::dvk::SpdLog::get_logger(<code>)->error(__VA_ARGS__)
-//  ---    #define DK_<mid_name>_FATAL(...)        ::dvk::SpdLog::get_logger(<code>)->fatal(__VA_ARGS__)
+//  ---    #define DK_<mid_name>_TRACE(...)        DK_TRACE(<code>, ...)
+//  ---    #define DK_<mid_name>_INFO(...)         DK_INFO(<code>, ...) 
+//  ---    #define DK_<mid_name>_WARN(...)         DK_WARN(<code>, ...) 
+//  ---    #define DK_<mid_name>_ERROR(...)        DK_ERROR(<code>, ...)
+//  ---    #define DK_<mid_name>_FATAL(...)        DK_FATAL(<code>, ...)
 
 #else
 

@@ -1,5 +1,8 @@
+#pragma once
+
 
 #include "common/base/macro.hpp"
+#include "common/base/return.hpp"
 
 #include "common/data/primitives.hpp"
 

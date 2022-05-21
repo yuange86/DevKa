@@ -19,7 +19,7 @@ endif
 # #############################################
 
 RESCOMP = windres
-INCLUDES += -Isrc -I../common/3rdparty/spdlog/include -I../common/src -I3rdparty/glfw/include -I3rdparty/imgui
+INCLUDES += -Isrc -I../common/3rdparty/spdlog/include -I../common/src -I3rdparty/glfw/include -I3rdparty/glad/include -I3rdparty/imgui
 FORCE_INCLUDE +=
 ALL_CPPFLAGS += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
 ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
@@ -36,10 +36,10 @@ TARGETDIR = ../bin/Debug-linux/devka-graphic
 TARGET = $(TARGETDIR)/libdevka-graphic.a
 OBJDIR = ../bin/Debug-linux/.int/devka-graphic
 DEFINES += -DDK_PLATFORM_LINUX -DDK_DEBUG
-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -g
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -g -std=c++20
-LIBS += ../bin/Debug-linux/common/libcommon.a ../bin/Debug-linux/GLFW/libGLFW.a ../bin/Debug-linux/ImGui/libImGui.a
-LDDEPS += ../bin/Debug-linux/common/libcommon.a ../bin/Debug-linux/GLFW/libGLFW.a ../bin/Debug-linux/ImGui/libImGui.a
+ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -fPIC -g
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -fPIC -g -std=c++20
+LIBS += ../bin/Debug-linux/common/libcommon.a ../bin/Debug-linux/GLFW/libGLFW.a ../bin/Debug-linux/ImGui/libImGui.a ../bin/Debug-linux/Glad/libGlad.a
+LDDEPS += ../bin/Debug-linux/common/libcommon.a ../bin/Debug-linux/GLFW/libGLFW.a ../bin/Debug-linux/ImGui/libImGui.a ../bin/Debug-linux/Glad/libGlad.a
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64
 
 else ifeq ($(config),release)
@@ -47,10 +47,10 @@ TARGETDIR = ../bin/Release-linux/devka-graphic
 TARGET = $(TARGETDIR)/libdevka-graphic.a
 OBJDIR = ../bin/Release-linux/.int/devka-graphic
 DEFINES += -DDK_PLATFORM_LINUX -DDK_RELEASE
-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O2
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -std=c++20
-LIBS += ../bin/Release-linux/common/libcommon.a ../bin/Release-linux/GLFW/libGLFW.a ../bin/Release-linux/ImGui/libImGui.a
-LDDEPS += ../bin/Release-linux/common/libcommon.a ../bin/Release-linux/GLFW/libGLFW.a ../bin/Release-linux/ImGui/libImGui.a
+ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -fPIC
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -fPIC -std=c++20
+LIBS += ../bin/Release-linux/common/libcommon.a ../bin/Release-linux/GLFW/libGLFW.a ../bin/Release-linux/ImGui/libImGui.a ../bin/Release-linux/Glad/libGlad.a
+LDDEPS += ../bin/Release-linux/common/libcommon.a ../bin/Release-linux/GLFW/libGLFW.a ../bin/Release-linux/ImGui/libImGui.a ../bin/Release-linux/Glad/libGlad.a
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64 -s
 
 endif
@@ -62,6 +62,13 @@ endif
 # File sets
 # #############################################
 
+GENERATED :=
+OBJECTS :=
+
+GENERATED += $(OBJDIR)/glfw_gl_init.o
+GENERATED += $(OBJDIR)/graphic_handle.o
+OBJECTS += $(OBJDIR)/glfw_gl_init.o
+OBJECTS += $(OBJDIR)/graphic_handle.o
 
 # Rules
 # #############################################
@@ -69,7 +76,7 @@ endif
 all: $(TARGET)
 	@:
 
-$(TARGET): $(OBJECTS) $(LDDEPS) | $(TARGETDIR)
+$(TARGET): $(GENERATED) $(OBJECTS) $(LDDEPS) | $(TARGETDIR)
 	$(PRELINKCMDS)
 	@echo Linking devka-graphic
 	$(SILENT) $(LINKCMD)
@@ -124,6 +131,13 @@ endif
 
 # File Rules
 # #############################################
+
+$(OBJDIR)/graphic_handle.o: src/devka-graphic/context/graphic_handle.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/glfw_gl_init.o: src/devka-graphic/preinit/glfw_gl_init.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 
 -include $(OBJECTS:%.o=%.d)
 ifneq (,$(PCH))

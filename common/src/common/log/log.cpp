@@ -37,14 +37,9 @@ namespace dvk
 
     std::shared_ptr<spdlog::logger> &SpdLog::get_logger(unsigned int code)
     {
-        if (m_loggers.find(code) == 0)
-        {
-            return m_loggers[0];
-        }
-        else
-        {
+        if (m_loggers.contains(code))
             return m_loggers[code];
-        }
+        return m_loggers[0];
     }
 
 }

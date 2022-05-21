@@ -1,12 +1,14 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # GNU Make 4.3
+ 
 # Built for x86_64-pc-linux-gnu
+ 
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri May 20 22:41:25 2022
+# Make data base, printed on Sat May 21 23:05:30 2022
 
 # Variables
 
@@ -14,12 +16,13 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 GDK_BACKEND = x11
 # environment
 LC_ALL = C
+ 
 # makefile (from 'Makefile', line 13)
 ImGui_config = debug
 # makefile (from 'Makefile', line 18)
 devka_editor_config = debug
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-b5a9379d-49f8-4dac-81b9-ce3b1a6e213c.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-c504b8b3-232c-48ad-adcd-c05e858b7061.sock
 # environment
 LC_NAME = ko_KR.UTF-8
 # environment
@@ -113,7 +116,7 @@ ZSH = /home/io-yologram/.oh-my-zsh
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 96115
+VSCODE_PID = 1682
 # environment
 XDG_SESSION_TYPE = x11
 # makefile (from 'Makefile', line 33)
@@ -123,7 +126,7 @@ PROJECTS := GLFW ImGui common devka-physics devka-graphic devka-core devka-edito
 # makefile (from 'Makefile', line 16)
 devka_graphic_config = debug
 # environment
-SESSION_MANAGER = local/sonyMac-DevKa:@/tmp/.ICE-unix/1199,unix/sonyMac-DevKa:/tmp/.ICE-unix/1199
+SESSION_MANAGER = local/sonyMac-DevKa:@/tmp/.ICE-unix/921,unix/sonyMac-DevKa:/tmp/.ICE-unix/921
 # automatic
 *F = $(notdir $*)
 # environment
@@ -145,6 +148,7 @@ MAKECMDGOALS := all
 # environment
 XMODIFIERS = @im=ibus
 # environment
+ 
 SHLVL = 0
 # makefile (from 'Makefile', line 17)
 devka_core_config = debug
@@ -207,7 +211,7 @@ MAKE_VERSION := 4.3
 # environment
 LC_MEASUREMENT = ko_KR.UTF-8
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 96115
+GIO_LAUNCHED_DESKTOP_FILE_PID = 1682
 # environment
 PAGER = less
 # environment
@@ -265,9 +269,9 @@ LC_IDENTIFICATION = ko_KR.UTF-8
 
 # Directories
 
-# . (device 2050, inode 10617007): 15 files, no impossibilities.
+# . (device 2050, inode 10617007): 17 files, no impossibilities.
 
-# 15 files, no impossibilities in 1 directories.
+# 17 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -278,7 +282,6 @@ LC_IDENTIFICATION = ko_KR.UTF-8
 devka-editor: common devka-core
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
- 
 #  File does not exist.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 79):
@@ -288,7 +291,7 @@ devka-editor: common devka-core
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-20 22:41:08.443396901
+#  Last modified 2022-05-21 22:04:13.202679281
 #  File has been updated.
 #  Successfully updated.
 
@@ -365,7 +368,7 @@ ImGui:
 #  Modification time never checked.
 #  File has not been updated.
 
-devka-core: common devka-physics devka-graphic
+devka-core: devka-physics devka-graphic
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
@@ -425,6 +428,7 @@ devka-graphic: common GLFW ImGui
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
+ 
 #  recipe to execute (from 'Makefile', line 67):
 	@echo "==== Building devka-graphic ($(devka_graphic_config)) ===="
 	@${MAKE} --no-print-directory -C devka-graphic -f Makefile config=$(devka_graphic_config)
@@ -439,19 +443,19 @@ common:
 	@${MAKE} --no-print-directory -C common -f Makefile config=$(common_config)
 
 # files hash-table stats:
-# Load=15/1024=1%, Rehash=0, Collisions=0/66=0%
+# Load=15/1024=1%, Rehash=0, Collisions=0/65=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 26 / storage = 246 B / avg = 9 B
-# current buf: size = 8162 B / used = 246 B / count = 26 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 28 / storage = 257 B / avg = 9 B
+# current buf: size = 8162 B / used = 257 B / count = 28 / avg = 9 B
 
-# strcache performance: lookups = 78 / hit rate = 66%
+# strcache performance: lookups = 79 / hit rate = 64%
 # hash-table stats:
-# Load=26/8192=0%, Rehash=0, Collisions=0/78=0%
-# Finished Make data base on Fri May 20 22:41:25 2022
+# Load=28/8192=0%, Rehash=0, Collisions=0/79=0%
+# Finished Make data base on Sat May 21 23:05:30 2022
 
  

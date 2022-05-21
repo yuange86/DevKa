@@ -11,6 +11,11 @@ workspace "devka"
         "Release",
     }
 
+    flags
+	{
+		"MultiProcessorCompile"
+	}
+
     startproject "devka-editor"
 
 
@@ -19,6 +24,7 @@ outputdir = "bin/%{cfg.buildcfg}-%{cfg.system}"
 
 group "3rdparty"
     include "devka-graphic/3rdparty/glfw"
+    include "devka-graphic/3rdparty/glad"
     include "devka-graphic/3rdparty/imgui"
 group ""
 

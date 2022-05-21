@@ -1,23 +1,22 @@
 
+#define DK_GRAPHIC_GLFW_GL
+
 #include <devka-core/core.hpp>
 
 int main()
 {
     dvk::memory::StoredMemory::init();
     DK_LOG_INIT();
+    DK_GRAPHIC_LOG_INIT();
     
+    // default logger debugging
     DK_DEFAULT_INFO("Hello!");
+    DK_INFO(1000, "?");
 
-    // auto* pointer = dvk::memory::alloc_type<int>();
-    // *pointer = 0;
-    // DK_DEFAULT_TRACE("{0} -> {1}", (__ptr_t)pointer, *pointer);
-    // DK_DEFAULT_WARN("{}", dvk::memory::StoredMemory::get_bytes(dvk::memory::StoredMemoryType_MANAGEMENT));
-    // DK_DEFAULT_ERROR("{}", dvk::memory::StoredMemory::get_bytes(dvk::memory::StoredMemoryType_RAW));
-    // dvk::memory::free_type(pointer);
-    // DK_DEFAULT_FATAL("{}", dvk::memory::StoredMemory::get_bytes(dvk::memory::StoredMemoryType_RAW));
+    dvk::graphic::set_graphic_api_type(dvk::graphic::GraphicAPI::OpenGL);
 
     auto* engine = dvk::DKEngine::create("DevKa");
 
-    engine->example_main_window(dvk::WindowProc());
+    engine->example_main_window(dvk::graphic::WindowProc());
 
 }

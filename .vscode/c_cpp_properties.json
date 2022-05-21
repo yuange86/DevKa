@@ -9,7 +9,8 @@
             "defines": [
                 "${default}",
                 "DK_DEBUG",
-                "DK_PLATFORM_LINUX"
+                "DK_PLATFORM_LINUX",
+                "DK_GRAPHIC_GLFW_GL"
             ],
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "gnu17",
@@ -20,6 +21,7 @@
                 "${workspaceFolder}/common/3rdparty/spdlog/include",
                 "${workspaceFolder}/common/src",
                 "${workspaceFolder}/devka-graphic/3rdparty/glfw/include",
+                "${workspaceFolder}/devka-graphic/3rdparty/glad/include",
                 "${workspaceFolder}/devka-graphic/3rdparty/imgui",
                 "${workspaceFolder}/devka-graphic/src",
                 "${workspaceFolder}/devka-physics/src",
