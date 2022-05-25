@@ -25,5 +25,14 @@
 #define BIND_CLASS_FN(fn) [this](auto&&... args) -> decltype(auto) { return this->fn(std::forward<decltype(args)>(args)...); }
 
 
+#ifdef DK_DEBUG
+
+#define DEBUG_ONLY(expressions)                 expression
 #define ASSIGN_DEBUG_ONLY(variable, value)      variable = value
 
+#else 
+
+#define DEBUG_ONLY(expressions)                 
+#define ASSIGN_DEBUG_ONLY(variable, value)      
+
+#endif

@@ -23,5 +23,14 @@ namespace dvk {
         this->main_window = new ExampleWindow(proc);
     }
 
+    void DKEngine::run() {
+        this->main_window->run();
+        graphic::GraphicContextSystem::poll_event();
+    }
+
+    b1 DKEngine::is_main_window_running() {
+        return this->main_window->is_running();
+    }
+
 
 }

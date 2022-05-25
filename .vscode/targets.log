@@ -1,12 +1,15 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # GNU Make 4.3
+ 
 # Built for x86_64-pc-linux-gnu
+ 
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Sun May 22 02:46:12 2022
+# Make data base, printed on Wed May 25 15:55:06 2022
 
 # Variables
 
@@ -19,7 +22,7 @@ ImGui_config = debug
 # makefile (from 'Makefile', line 19)
 devka_editor_config = debug
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-23c14b64-1de7-49e9-95ba-78cf255594f9.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-431f18d8-438b-45c9-be4a-0fb388a080b9.sock
 # environment
 LC_NAME = ko_KR.UTF-8
 # environment
@@ -113,7 +116,7 @@ ZSH = /home/io-yologram/.oh-my-zsh
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 97933
+VSCODE_PID = 42218
 # environment
 XDG_SESSION_TYPE = x11
 # makefile (from 'Makefile', line 35)
@@ -123,7 +126,7 @@ PROJECTS := GLFW Glad ImGui common devka-physics devka-graphic devka-core devka-
 # makefile (from 'Makefile', line 17)
 devka_graphic_config = debug
 # environment
-SESSION_MANAGER = local/sonyMac-DevKa:@/tmp/.ICE-unix/921,unix/sonyMac-DevKa:/tmp/.ICE-unix/921
+SESSION_MANAGER = local/sonyMac-DevKa:@/tmp/.ICE-unix/903,unix/sonyMac-DevKa:/tmp/.ICE-unix/903
 # automatic
 *F = $(notdir $*)
 # environment
@@ -207,7 +210,7 @@ MAKE_VERSION := 4.3
 # environment
 LC_MEASUREMENT = ko_KR.UTF-8
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 97933
+GIO_LAUNCHED_DESKTOP_FILE_PID = 42218
 # environment
 PAGER = less
 # environment
@@ -278,19 +281,19 @@ LC_IDENTIFICATION = ko_KR.UTF-8
 # Files
 
 devka-editor: common devka-core GLFW Glad
- 
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 87):
 	@echo "==== Building devka-editor ($(devka_editor_config)) ===="
+ 
 	@${MAKE} --no-print-directory -C devka-editor -f Makefile config=$(devka_editor_config)
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-22 02:10:30.247339385
+#  Last modified 2022-05-23 12:32:04.105236832
 #  File has been updated.
 #  Successfully updated.
 
@@ -465,6 +468,6 @@ common:
 # strcache performance: lookups = 87 / hit rate = 66%
 # hash-table stats:
 # Load=29/8192=0%, Rehash=0, Collisions=0/87=0%
-# Finished Make data base on Sun May 22 02:46:12 2022
+# Finished Make data base on Wed May 25 15:55:06 2022
 
  

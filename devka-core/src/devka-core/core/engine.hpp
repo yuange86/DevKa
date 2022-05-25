@@ -21,6 +21,11 @@ namespace dvk {
         void example_main_window(graphic::WindowProc proc);
         // void apply_main_window(Raw(IWindow) window);
 
+
+        void run(/* f32 or timestep : deltatime */);
+
+        b1 is_main_window_running();
+
     private:
 
         u32 logger_code;

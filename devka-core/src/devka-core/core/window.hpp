@@ -13,6 +13,8 @@ namespace dvk {
         virtual void run() = 0;
         virtual void destroy() = 0;
         // void on_event();
+
+        virtual b1 is_running() = 0;
     };
 
 
@@ -21,10 +23,13 @@ namespace dvk {
         virtual void run() override;
         virtual void destroy() override;
 
+        virtual b1 is_running() override;
+
         ExampleWindow(graphic::WindowProc proc) {
             init(proc);
         }
 
+        graphic::WindowProc proc;
         graphic::GraphicContext graphic_window;
         
     };

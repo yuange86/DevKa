@@ -19,4 +19,8 @@ int main()
 
     engine->example_main_window(dvk::graphic::WindowProc());
 
+    while(engine->is_main_window_running()) {
+        engine->run();
+    }
+
 }
