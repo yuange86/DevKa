@@ -1,6 +1,13 @@
 /bin
+/.vs
 
 **.log
+
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
+**.sln
+
 
 GPATH
 GRTAGS
